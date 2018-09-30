@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ "settings" | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label>{{ "language" | translate }}</ion-label>
+    <ion-select [(ngModel)]="selectedLanguage" (ionChange)="changeLanguage()">
+      <ion-option value="en">English</ion-option>
+      <ion-option value="sin">සිංහල </ion-option>
+    </ion-select>
+  </ion-item>
+
+</ion-content>
