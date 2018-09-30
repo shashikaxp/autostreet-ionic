@@ -1,0 +1,7 @@
+{
+  "name": "autostreet",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
