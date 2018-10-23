@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { SparePartsProvider } from "../../../providers/core/spare-parts/spare-parts";
 import _ from "lodash";
 import { Manufacturer } from "../../../interfaces/Manufacturer";
-
-;
+import { Model } from "../../../interfaces/Model";
+import { Category } from "../../../interfaces/Category";
 
 @IonicPage()
 @Component({
@@ -15,13 +15,12 @@ export class AddSparePartsPage {
 
   public manufacturers: Array<Manufacturer>;
   public manufacture: Manufacturer;
-  public models;
-  public model;
-  public categories;
-  public category;
+  public models: Array<Model>;
+  public model: Model;
+  public categories: Array<Category>;
+  public category: Category;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
               private sparePartsProvider: SparePartsProvider) {
 
     sparePartsProvider.getManufacturers().subscribe(data => {
