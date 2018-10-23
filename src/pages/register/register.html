@@ -10,45 +10,70 @@
 <ion-content padding>
   <ion-grid>
     <ion-row>
-      <form col-12>
+      <form col-12 #registerForm="ngForm" (submit)="register(registerForm)">
         <ion-col>
           <ion-item>
-            <ion-label floating>Store Name</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-label floating>Company Name</ion-label>
+            <ion-input ngModel name="name" type="text"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col>
           <ion-item>
             <ion-label floating>Address Line 1</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input ngModel name="address_line1" type="text"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col>
           <ion-item>
             <ion-label floating>Address Line 2</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input ngModel name="address_line2" type="text"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col>
           <ion-item>
-            <ion-label floating>Username</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-label floating>City</ion-label>
+            <ion-input ngModel name="city" type="text"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col>
           <ion-item>
-            <ion-label floating>Password</ion-label>
-            <ion-input type="password"></ion-input>
+            <ion-label floating>Telephone</ion-label>
+            <ion-input ngModel name="telephone" type="text"></ion-input>
           </ion-item>
         </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input ngModel name="email" type="email"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Website</ion-label>
+            <ion-input ngModel name="website" type="email"></ion-input>
+          </ion-item>
+        </ion-col>
+        <fieldset ngModelGroup="user">
+          <ion-col>
+            <ion-item>
+              <ion-label floating>Username</ion-label>
+              <ion-input ngModel name="username" type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input ngModel name="password"
+                         type="password"></ion-input>
+            </ion-item>
+          </ion-col>
+        </fieldset>
         <ion-col padding-top>
           <button ion-button button-right full color="primary"
-                  (click)="login()">Login
+                  type="submit">Register
           </button>
         </ion-col>
-
       </form>
     </ion-row>
-
   </ion-grid>
 </ion-content>
