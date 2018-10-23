@@ -9,10 +9,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { SettingsProvider } from "../providers/settings/settings";
-import { ApiProvider } from '../providers/core/api/api';
-import { CompanyProvider } from '../providers/company/company';
+import { IonicStorageModule } from "@ionic/storage";
+
 import { AuthProvider } from '../providers/auth/auth';
+import { ApiProvider } from '../providers/core/api/api';
+import { SettingsProvider } from "../providers/settings/settings";
+import { CompanyProvider } from '../providers/company/company';
 import { HttpErrorHandlerProvider } from '../providers/core/api/http-error-handler';
 
 export function setTranslateLoader(http: HttpClient) {
@@ -26,6 +28,7 @@ export function setTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

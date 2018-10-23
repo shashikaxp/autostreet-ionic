@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { AuthProvider } from "../../providers/auth/auth";
+import { Storage } from "@ionic/storage";
+import { STORAGE } from "../../config";
 
 @IonicPage()
 @Component({
@@ -10,15 +12,18 @@ import { AuthProvider } from "../../providers/auth/auth";
 export class LoginPage {
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              private authProvider: AuthProvider) {
+              private authProvider: AuthProvider,
+              private storage: Storage) {
   }
 
-  login(loginForm) {
-    this.authProvider.login(loginForm.value).subscribe(data => {
-      console.log('data', data);
+   login(loginForm) {
+    this.authProvider.login(loginForm.value).subscribe(async data => {
+      await this.storage.set(STORAGE.TOKEN, data.token);
+      await this.storage.set(STORAGE.COMPANY_Id, data.company_id);
+      await this.storage.set(STORAGE.USER_ID, data.user_id);
+      this.navCtrl.setRoot("HomePage", {}, {animate: true, direction: 'forward'})
     })
-    // this.navCtrl.setRoot("HomePage", {}, {animate: true, direction: 'forward'});
+
   }
 
 }
