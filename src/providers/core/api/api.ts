@@ -11,7 +11,7 @@ export class ApiProvider {
               private errorHandler: HttpErrorHandlerProvider) {
   }
 
-  httpGetCall(url, header){
+  httpGetCall(url, header?){
     return Observable.create(observer => {
       this.http.get(url, header)
         .subscribe(data => {
@@ -22,7 +22,7 @@ export class ApiProvider {
     });
   }
 
-  httpPostCall(url, params, header) {
+  httpPostCall(url, params, header?) {
     return Observable.create(observer => {
       this.http.post(url, params, header)
         .subscribe(data => {
