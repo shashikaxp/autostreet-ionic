@@ -7,15 +7,19 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {
+  HttpClientModule, HttpClient, HTTP_INTERCEPTORS
+} from '@angular/common/http';
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { IonicStorageModule } from "@ionic/storage";
 
-import { AuthProvider } from '../providers/auth/auth';
+import { AuthProvider } from '../providers/core/auth/auth';
 import { ApiProvider } from '../providers/core/api/api';
-import { SettingsProvider } from "../providers/settings/settings";
-import { CompanyProvider } from '../providers/company/company';
+import { SettingsProvider } from "../providers/core/settings/settings";
+import { CompanyProvider } from '../providers/core/company/company';
 import { HttpErrorHandlerProvider } from '../providers/core/api/http-error-handler';
+import { SparePartsProvider } from '../providers/core/spare-parts/spare-parts';
+import { TokenInterceptorProvider } from "../providers/util/token-interceptor/token-interceptor";
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -50,7 +54,13 @@ export function setTranslateLoader(http: HttpClient) {
     ApiProvider,
     CompanyProvider,
     AuthProvider,
-    HttpErrorHandlerProvider
+    HttpErrorHandlerProvider,
+    SparePartsProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorProvider,
+      multi: true
+    }
   ]
 })
 export class AppModule {}

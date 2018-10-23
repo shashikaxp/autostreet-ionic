@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>add-spare-parts</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+
+      <ion-item>
+        <ion-label>Manufacture</ion-label>
+        <ion-select [(ngModel)]="manufacture" (ionChange)="loadModels()">
+          <ion-option *ngFor="let m of manufacturers"
+                      [value]="m">{{m.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Model</ion-label>
+        <ion-select [disabled]="!isManufacturerAvailable()"
+                    [(ngModel)]="model">
+          <ion-option *ngFor="let m of models"
+                      [value]="m">{{m.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Categories</ion-label>
+        <ion-select [(ngModel)]="category">
+          <ion-option *ngFor="let c of categories"
+                      [value]="c">{{c.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>
