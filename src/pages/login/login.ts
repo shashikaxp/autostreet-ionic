@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AuthProvider } from "../../providers/auth/auth";
 
 @IonicPage()
 @Component({
@@ -8,15 +9,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private authProvider: AuthProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-
-  login() {
-    this.navCtrl.setRoot("HomePage", {}, {animate: true, direction: 'forward'});
+  login(loginForm) {
+    this.authProvider.login(loginForm.value).subscribe(data => {
+      console.log('data', data);
+    })
+    // this.navCtrl.setRoot("HomePage", {}, {animate: true, direction: 'forward'});
   }
 
 }

@@ -8,25 +8,24 @@
 <ion-content padding>
   <ion-grid>
     <ion-row>
-      <form col-12>
+      <form col-12 #loginForm="ngForm" (submit)="login(loginForm)">
         <ion-col>
           <ion-item>
             <ion-label floating>Username</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" ngModel name="username"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col>
           <ion-item>
             <ion-label floating>Password</ion-label>
-            <ion-input type="password"></ion-input>
+            <ion-input type="password" ngModel name="password"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col padding-top>
           <button ion-button button-right full color="primary"
-                  (click)="login()">Login
+                  type="submit">Login
           </button>
         </ion-col>
-
       </form>
     </ion-row>
     <p text-center navPush="RegisterPage">Register</p>
