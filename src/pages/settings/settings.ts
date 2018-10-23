@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SettingsProvider } from "../../providers/settings/settings";
+import { SettingsProvider } from "../../providers/core/settings/settings";
 
 @IonicPage()
 @Component({

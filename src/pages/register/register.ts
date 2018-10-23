@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { CompanyProvider } from "../../providers/company/company";
+import { CompanyProvider } from "../../providers/core/company/company";
 
 @IonicPage()
 @Component({
