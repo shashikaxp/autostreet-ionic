@@ -21,12 +21,13 @@ export class HttpErrorHandlerProvider {
 
     if (status.toString() === "401") {
       if (this.navCtrl.getActive().name !== "LoginPage") {
-        this.navCtrl.setRoot("LoginPage", {}, {animate: true, direction: 'forward'})
+        this.navCtrl.setRoot("LoginPage", {}, {animate: true, direction: 'forward'});
+      } else {
+        this.createErrorToast("Invalid Credentials");
       }
     } else {
       this.createErrorToast(errorMessage);
     }
-
   }
 
   createErrorToast(message) {
