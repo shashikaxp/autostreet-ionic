@@ -20,6 +20,7 @@ import { CompanyProvider } from '../providers/core/company/company';
 import { HttpErrorHandlerProvider } from '../providers/core/api/http-error-handler';
 import { SparePartsProvider } from '../providers/core/spare-parts/spare-parts';
 import { TokenInterceptorProvider } from "../providers/util/token-interceptor/token-interceptor";
+import { NgHttpLoaderModule } from "ng-http-loader/ng-http-loader.module";
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,6 +35,7 @@ export function setTranslateLoader(http: HttpClient) {
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     HttpClientModule,
+    NgHttpLoaderModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

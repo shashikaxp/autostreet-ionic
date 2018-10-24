@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TranslateService } from "@ngx-translate/core";
+import { Spinkit } from "ng-http-loader/spinkits";
 
 @Component({
   templateUrl: 'app.html'
@@ -11,6 +12,7 @@ import { TranslateService } from "@ngx-translate/core";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any = 'LoginPage';
+  public spinkit = Spinkit;
 
   constructor(public platform: Platform,
               public statusBar: StatusBar,
