@@ -21,6 +21,7 @@ import { HttpErrorHandlerProvider } from '../providers/core/api/http-error-handl
 import { SparePartsProvider } from '../providers/core/spare-parts/spare-parts';
 import { TokenInterceptorProvider } from "../providers/util/token-interceptor/token-interceptor";
 import { NgHttpLoaderModule } from "ng-http-loader/ng-http-loader.module";
+import { Camera } from "@ionic-native/camera";
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -62,7 +63,8 @@ export function setTranslateLoader(http: HttpClient) {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorProvider,
       multi: true
-    }
+    },
+    Camera
   ]
 })
 export class AppModule {}
