@@ -24,18 +24,18 @@ export class AddSparePartsPage {
               private sparePartsProvider: SparePartsProvider) {
 
     sparePartsProvider.getManufacturers().subscribe(data => {
-      this.manufacturers = data;
+      this.manufacturers = data.manufacturers;
     });
 
     sparePartsProvider.getCategories().subscribe(data => {
-      this.categories = data;
+      this.categories = data.categories;
     })
 
   }
 
   loadModels() {
-    this.sparePartsProvider.getModels(this.manufacture.id).subscribe(models => {
-      this.models = models;
+    this.sparePartsProvider.getModels(this.manufacture.id).subscribe(data => {
+      this.models = data.models;
     });
   }
 

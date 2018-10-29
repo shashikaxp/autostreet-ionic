@@ -7,15 +7,15 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <ion-grid>
     <ion-row>
-
       <ion-item>
         <ion-label>Manufacture</ion-label>
         <ion-select [(ngModel)]="manufacture" (ionChange)="loadModels()">
           <ion-option *ngFor="let m of manufacturers"
-                      [value]="m">{{m.name}}</ion-option>
+                      [value]="m">{{m.name}}
+          </ion-option>
         </ion-select>
       </ion-item>
 
@@ -24,7 +24,8 @@
         <ion-select [disabled]="!isManufacturerAvailable()"
                     [(ngModel)]="model">
           <ion-option *ngFor="let m of models"
-                      [value]="m">{{m.name}}</ion-option>
+                      [value]="m">{{m.name}}
+          </ion-option>
         </ion-select>
       </ion-item>
 
@@ -32,10 +33,48 @@
         <ion-label>Categories</ion-label>
         <ion-select [(ngModel)]="category">
           <ion-option *ngFor="let c of categories"
-                      [value]="c">{{c.name}}</ion-option>
+                      [value]="c">{{c.name}}
+          </ion-option>
         </ion-select>
       </ion-item>
 
     </ion-row>
+
+    <ion-row padding>
+      <ion-label>Description</ion-label>
+      <ion-col col-12>
+        <textarea col-12 rows="4">
+      </textarea>
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding>
+      <ion-label>Images</ion-label>
+      <ion-row>
+        <ion-col col-6>
+          <img src="../../../assets/imgs/default-placeholder.png"
+               alt="default-image">
+        </ion-col>
+        <ion-col col-6>
+          <img src="../../../assets/imgs/default-placeholder.png"
+               alt="default-image">
+        </ion-col>
+        <ion-col col-6>
+          <img src="../../../assets/imgs/default-placeholder.png"
+               alt="default-image">
+        </ion-col>
+        <ion-col col-6>
+          <img src="../../../assets/imgs/default-placeholder.png"
+               alt="default-image">
+        </ion-col>
+      </ion-row>
+
+    </ion-row>
+
+    <ion-row margin-bottom>
+      <button ion-button class="center">Upload</button>
+    </ion-row>
+
   </ion-grid>
+
 </ion-content>
