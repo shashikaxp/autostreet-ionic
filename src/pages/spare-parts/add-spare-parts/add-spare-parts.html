@@ -30,7 +30,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label>Categories</ion-label>
+        <ion-label>Category</ion-label>
         <ion-select [(ngModel)]="category">
           <ion-option *ngFor="let c of categories"
                       [value]="c">{{c.name}}
@@ -38,17 +38,20 @@
         </ion-select>
       </ion-item>
 
+      <ion-item>
+        <ion-label>Condition</ion-label>
+        <ion-select [(ngModel)]="condition">
+          <ion-option *ngFor="let condition of conditions"
+                      [value]="condition">{{condition.name}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
     </ion-row>
 
     <ion-row padding>
       <ion-label>Title</ion-label>
       <ion-col col-12>
         <input type="text" [(ngModel)]="title">
-      </ion-col>
-
-      <ion-label>Condition</ion-label>
-      <ion-col col-12>
-        <input type="text" [(ngModel)]="condition">
       </ion-col>
 
       <ion-label>Price</ion-label>
@@ -87,7 +90,7 @@
     </ion-row>
 
     <ion-row margin-bottom>
-      <button ion-button class="center" (click)="loadPreviewPage()">Upload
+      <button ion-button class="center" (click)="loadPreviewPage()">Preview
       </button>
     </ion-row>
 

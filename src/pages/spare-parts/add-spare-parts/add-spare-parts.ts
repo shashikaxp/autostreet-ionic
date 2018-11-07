@@ -20,8 +20,9 @@ export class AddSparePartsPage {
   public model: Model;
   public categories: Array<Category>;
   public category: Category;
-  public title;
+  public conditions = [];
   public condition;
+  public title;
   public price;
   public description;
   public cameraOptions;
@@ -49,7 +50,16 @@ export class AddSparePartsPage {
 
     sparePartsProvider.getCategories().subscribe(data => {
       this.categories = data.categories;
-    })
+    });
+
+    sparePartsProvider.getConditions().subscribe(data => {
+      _.forEach(data, (value, key) => {
+        this.conditions.push({
+          id: key,
+          name: value
+        });
+      });
+    });
 
   }
 

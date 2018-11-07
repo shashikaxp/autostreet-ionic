@@ -23,6 +23,11 @@ export class SparePartsProvider {
     return this.apiProvider.httpGetCall(url);
   }
 
+  getConditions() {
+    let url = this.apiProvider.getHttpUrl(ENDPOINTS.PARTS.CONDITIONS);
+    return this.apiProvider.httpGetCall(url);
+  }
+
   addNewSparePart(companyId, params) {
     let url = this.apiProvider.getHttpUrl(ENDPOINTS.PARTS.ADD, companyId);
     return this.apiProvider.httpPostCall(url, params);

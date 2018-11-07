@@ -43,7 +43,7 @@ export class SparePartPreviewPage {
     formData.append('title', this.sparePart.title);
     formData.append('description', this.sparePart.description);
     formData.append('price', this.sparePart.price);
-    formData.append('condition', this.sparePart.condition);
+    formData.append('condition', this.sparePart.condition.id);
     formData.append('manufacturer_id', this.sparePart.manufacturer.id.toString());
     formData.append('model_id', this.sparePart.model.id.toString());
     _.forEach(this.sparePart.images, function (image) {

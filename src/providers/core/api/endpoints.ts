@@ -18,6 +18,7 @@ export const ENDPOINTS = {
     MANUFACTURERS: API_URL + "manufacturers",
     MODELS: API_URL + "manufacturers/{{param1}}/models",
     CATEGORIES: API_URL + "spare-parts/categories",
+    CONDITIONS: API_URL + `spare-parts/conditions`,
     ADD: API_URL +  "companies/{{param1}}/spare-parts"
   }
 
