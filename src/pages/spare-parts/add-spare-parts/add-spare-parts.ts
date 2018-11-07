@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, ModalController, NavController } from 'ionic-angular';
 import { SparePartsProvider } from "../../../providers/core/spare-parts/spare-parts";
 import _ from "lodash";
 import { Manufacturer } from "../../../interfaces/Manufacturer";
@@ -15,18 +15,22 @@ import { Camera } from "@ionic-native/camera";
 export class AddSparePartsPage {
 
   public manufacturers: Array<Manufacturer>;
-  public manufacture: Manufacturer;
+  public manufacturer: Manufacturer;
   public models: Array<Model>;
   public model: Model;
   public categories: Array<Category>;
   public category: Category;
+  public title;
+  public condition;
+  public price;
   public description;
   public cameraOptions;
   public imagesArray = [];
 
   constructor(public navCtrl: NavController,
               private sparePartsProvider: SparePartsProvider,
-              private camera: Camera) {
+              private camera: Camera,
+              private modalCtrl: ModalController) {
 
     this.cameraOptions = {
       quality: 50,
@@ -34,8 +38,8 @@ export class AddSparePartsPage {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       correctOrientation: true,
-      targetWidth: 300,
-      targetHeight: 300,
+      targetWidth: 600,
+      targetHeight: 600,
       allowEdit: true
     };
 
@@ -50,13 +54,13 @@ export class AddSparePartsPage {
   }
 
   loadModels() {
-    this.sparePartsProvider.getModels(this.manufacture.id).subscribe(data => {
+    this.sparePartsProvider.getModels(this.manufacturer.id).subscribe(data => {
       this.models = data.models;
     });
   }
 
   isManufacturerAvailable() {
-    return _.get(this.manufacture, 'id', false);
+    return _.get(this.manufacturer, 'id', false);
   }
 
   takeSpatePartImage(type) {
@@ -88,17 +92,31 @@ export class AddSparePartsPage {
 
   getSparePartDetails() {
     return {
-      manufacture: this.manufacture,
+      manufacturer: this.manufacturer,
       model: this.model,
       category: this.category,
+      title: this.title,
       description: this.description,
-      images: this.imagesArray
+      images: this.imagesArray,
+      condition: this.condition,
+      price: this.price
     }
   }
 
   loadPreviewPage() {
     let data = this.getSparePartDetails();
-    console.log(JSON.stringify(data));
+    let profileModal = this.modalCtrl.create("SparePartPreviewPage",
+      {
+        sparePart: data
+      });
+
+    profileModal.onDidDismiss(data => {
+      if (data.status) {
+        this.navCtrl.setRoot("HomePage");
+      }
+    });
+
+    profileModal.present();
   }
 
 }

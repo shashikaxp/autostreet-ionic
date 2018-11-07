@@ -1,0 +1,79 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>spare-part-preview</ion-title>
+    <ion-buttons right>
+      <button ion-button
+              (click)="close()">
+        Close
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row no-padding>
+      <ion-col col-sm>
+        <ion-slides [pager]="true" [centeredSlides]="true">
+          <ion-slide *ngFor="let image of sparePart.images">
+            <img [src]="image.src">
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row col-12 padding>
+      <ion-col col-12>
+        <h4>{{sparePart.title}}</h4>
+        <p>{{sparePart.description}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding>
+      <ion-col col-6>Manufacturer</ion-col>
+      <ion-col col-6 text-right>
+        {{sparePart.manufacturer.name}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding>
+      <ion-col col-6>Model</ion-col>
+      <ion-col col-6 text-right>
+        {{sparePart.model.name}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding>
+      <ion-col col-6>Category</ion-col>
+      <ion-col col-6 text-right>
+        {{sparePart.category.name}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding>
+      <ion-col col-6>Condition</ion-col>
+      <ion-col col-6 text-right>
+        {{sparePart.condition}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding>
+      <ion-col col-6>Price</ion-col>
+      <ion-col col-6 text-right>
+        {{sparePart.price}}
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <ion-row padding-top>
+    <ion-col col-12>
+      <button ion-button (click)="addNewSparePart()">UPLOAD</button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

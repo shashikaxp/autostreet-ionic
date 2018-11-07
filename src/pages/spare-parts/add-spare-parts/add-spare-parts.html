@@ -12,7 +12,7 @@
     <ion-row>
       <ion-item>
         <ion-label>Manufacture</ion-label>
-        <ion-select [(ngModel)]="manufacture" (ionChange)="loadModels()">
+        <ion-select [(ngModel)]="manufacturer" (ionChange)="loadModels()">
           <ion-option *ngFor="let m of manufacturers"
                       [value]="m">{{m.name}}
           </ion-option>
@@ -41,6 +41,21 @@
     </ion-row>
 
     <ion-row padding>
+      <ion-label>Title</ion-label>
+      <ion-col col-12>
+        <input type="text" [(ngModel)]="title">
+      </ion-col>
+
+      <ion-label>Condition</ion-label>
+      <ion-col col-12>
+        <input type="text" [(ngModel)]="condition">
+      </ion-col>
+
+      <ion-label>Price</ion-label>
+      <ion-col col-12>
+        <input type="text" [(ngModel)]="price">
+      </ion-col>
+
       <ion-label>Description</ion-label>
       <ion-col col-12>
         <textarea [(ngModel)]="description" col-12 rows="4">
