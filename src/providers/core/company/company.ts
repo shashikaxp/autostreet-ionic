@@ -19,4 +19,9 @@ export class CompanyProvider {
     return this.apiProvider.httpPostCall(url, companyDetails, httpHeaders);
   }
 
+  getSparePartsList(companyId, pageNo, limit) {
+    let url = this.apiProvider.getHttpUrl(ENDPOINTS.COMPANY.PARTS_LIST, companyId, pageNo, limit);
+    return this.apiProvider.httpGetCall(url);
+  }
+
 }
