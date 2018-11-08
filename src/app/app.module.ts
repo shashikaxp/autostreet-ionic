@@ -22,6 +22,7 @@ import { SparePartsProvider } from '../providers/core/spare-parts/spare-parts';
 import { TokenInterceptorProvider } from "../providers/util/token-interceptor/token-interceptor";
 import { NgHttpLoaderModule } from "ng-http-loader/ng-http-loader.module";
 import { Camera } from "@ionic-native/camera";
+import { IonicImageLoader } from "ionic-image-loader";
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,7 +44,8 @@ export function setTranslateLoader(http: HttpClient) {
         useFactory: (setTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    IonicImageLoader.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -1,0 +1,13 @@
+<ion-col no-padding>
+  <img-loader [src]="getImageSrc('name')" [spinner]="true"
+              [useImg]="true"
+              class="image-container">
+  </img-loader>
+  <button *ngIf="!isValidUrl()" (click)="takeSparePartImage()" small
+          class="edit-button">Add</button>
+  <button *ngIf="isValidUrl()" (click)="takeSparePartImage()" small
+          class="edit-button">Change</button>
+</ion-col>
+
+
+
