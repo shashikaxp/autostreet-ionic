@@ -14,7 +14,9 @@
       </ion-thumbnail>
       <h2>{{part.title}}</h2>
       <p>{{part.description}}</p>
-      <button ion-button clear item-end>Edit</button>
+      <button ion-button clear item-end
+              (click)="loadEditSparePartsModal(part.sparePartId)">
+        Edit</button>
     </ion-item>
   </ion-list>
 </ion-content>

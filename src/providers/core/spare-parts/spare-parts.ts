@@ -33,4 +33,9 @@ export class SparePartsProvider {
     return this.apiProvider.httpPostCall(url, params);
   }
 
+  getDetails(companyId, partId) {
+    let url = this.apiProvider.getHttpUrl(ENDPOINTS.PARTS.DETAILS, companyId, partId);
+    return this.apiProvider.httpGetCall(url);
+  }
+
 }
