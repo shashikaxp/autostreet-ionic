@@ -36,6 +36,9 @@ export class InventoryPage {
     let modal = this.modalCtrl.create("EditSparePartsPage", {
       sparePartId: id
     });
+    modal.onDidDismiss((data) => {
+      this.getSparePartsList();
+    });
     modal.present();
   }
 

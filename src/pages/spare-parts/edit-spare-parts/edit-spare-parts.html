@@ -80,25 +80,11 @@
     <ion-row padding>
       <ion-label>Images</ion-label>
       <ion-row>
-        <ion-col col-6 tappable (click)="takeSpatePartImage(0)">
-          <img [src]="getImageSrc(0)"
-               alt="default-image">
-          <button ion-button small full class="edit-button">Edit</button>
-        </ion-col>
-        <ion-col col-6 tappable (click)="takeSpatePartImage(1)">
-          <img [src]="getImageSrc(1)"
-               alt="default-image">
-          <button ion-button small full class="edit-button">Edit</button>
-        </ion-col>
-        <ion-col col-6 tappable (click)="takeSpatePartImage(2)">
-          <img [src]="getImageSrc(2)"
-               alt="default-image">
-          <button ion-button small full class="edit-button">Edit</button>
-        </ion-col>
-        <ion-col col-6 tappable (click)="takeSpatePartImage(3)">
-          <img [src]="getImageSrc(3)"
-               alt="default-image">
-          <button ion-button small full class="edit-button">Edit</button>
+        <ion-col col-6 *ngFor="let img of imagesArray">
+          <camera-image
+            (changeImage)="updateImage($event, img.id)"
+            [imageInputSrc]="img.url"
+          ></camera-image>
         </ion-col>
       </ion-row>
 

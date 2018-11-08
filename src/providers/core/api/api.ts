@@ -33,6 +33,17 @@ export class ApiProvider {
     });
   }
 
+  httpPutCall(url, params, header?) {
+    return Observable.create(observer => {
+      this.http.put(url, params, header)
+        .subscribe(data => {
+          observer.next(data);
+        },(err) => {
+          this.errorHandler.handle(err);
+        });
+    });
+  }
+
   getHttpUrl(url, ...variables) {
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     let compiled =  _.template(url);

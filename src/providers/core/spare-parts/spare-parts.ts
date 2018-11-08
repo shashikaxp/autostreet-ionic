@@ -38,4 +38,9 @@ export class SparePartsProvider {
     return this.apiProvider.httpGetCall(url);
   }
 
+  updateSparePartImage(companyId, partId, imageId, params) {
+    let url = this.apiProvider.getHttpUrl(ENDPOINTS.PARTS.IMAGE_UPDATE, companyId, partId, imageId);
+    return this.apiProvider.httpPutCall(url, params);
+  }
+
 }

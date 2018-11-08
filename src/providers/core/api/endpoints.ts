@@ -20,7 +20,8 @@ export const ENDPOINTS = {
     CATEGORIES: API_URL + "spare-parts/categories",
     CONDITIONS: API_URL + "spare-parts/conditions",
     ADD: API_URL +  "companies/{{param1}}/spare-parts",
-    DETAILS: API_URL + "companies/{{param1}}/spare-parts/{{param2}}"
+    DETAILS: API_URL + "companies/{{param1}}/spare-parts/{{param2}}",
+    IMAGE_UPDATE: API_URL + "companies/{{param1}}/spare-parts/{{param2}}/images/{{param3}}"
   }
 
 };
