@@ -9,7 +9,6 @@ import { Camera } from "@ionic-native/camera";
 export class CameraImageComponent {
 
   @Input() imageInputSrc: string;
-  @Input() imageName: string;
   @Output() changeImage = new EventEmitter<string>();
   private cameraOptions;
   public imageSrc;

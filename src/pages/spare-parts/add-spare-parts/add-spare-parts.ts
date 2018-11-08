@@ -33,17 +33,6 @@ export class AddSparePartsPage {
               private camera: Camera,
               private modalCtrl: ModalController) {
 
-    this.cameraOptions = {
-      quality: 50,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      correctOrientation: true,
-      targetWidth: 600,
-      targetHeight: 600,
-      allowEdit: true
-    };
-
     sparePartsProvider.getManufacturers().subscribe(data => {
       this.manufacturers = data.manufacturers;
     });
@@ -61,6 +50,8 @@ export class AddSparePartsPage {
       });
     });
 
+    this.imagesArray = this.getImagesArray();
+
   }
 
   loadModels() {
@@ -73,31 +64,11 @@ export class AddSparePartsPage {
     return _.get(this.manufacturer, 'id', false);
   }
 
-  takeSpatePartImage(type) {
-    this.camera.getPicture(this.cameraOptions).then((imageData) => {
-      let imageObject = _.find(this.imagesArray, {'type': type});
-      if (typeof imageObject === 'undefined') {
-        this.imagesArray.push({
-          type: type,
-          src: 'data:image/jpeg;base64,'  + imageData
-        });
-      } else {
-        imageObject.src = 'data:image/jpeg;base64,' + imageData;
+  takeSpatePartImage(url, id) {
+      let imageObject = _.find(this.imagesArray, {'id': id});
+      if (typeof imageObject !== 'undefined') {
+        imageObject.url = url
       }
-    }, (err) => {
-      // Handle error
-    });
-  }
-
-  getImageSrc(type) {
-    let imageObject = _.find(this.imagesArray, {'type': type});
-    let src = null;
-    if (typeof imageObject === 'undefined') {
-      src = '../../../assets/imgs/default-placeholder.png';
-    } else {
-      src = imageObject['src']
-    }
-    return src;
   }
 
   getSparePartDetails() {
@@ -107,7 +78,7 @@ export class AddSparePartsPage {
       category: this.category,
       title: this.title,
       description: this.description,
-      images: this.imagesArray,
+      images: _.filter(this.imagesArray, 'url'),
       condition: this.condition,
       price: this.price
     }
@@ -127,6 +98,17 @@ export class AddSparePartsPage {
     });
 
     profileModal.present();
+  }
+
+  getImagesArray() {
+    let tempArray = [];
+    for (let i = 0; i < 4; i++ ) {
+      tempArray.push({
+        id: i,
+        url: null
+      });
+    }
+    return tempArray;
   }
 
 }
