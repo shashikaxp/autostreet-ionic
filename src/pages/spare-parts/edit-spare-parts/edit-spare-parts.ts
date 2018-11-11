@@ -108,11 +108,21 @@ export class EditSparePartsPage {
   }
 
   async updateImage(url, imageId) {
+    let observer;
     let companyId = await this.storage.get(STORAGE.COMPANY_ID);
     let formData = new FormData();
-    formData.append('image', dataURItoBlob(url), imageId + '.jpeg');
     this.spinner.show();
-    this.sparePartsProvider.updateSparePartImage(companyId, this.sparePartId, imageId, formData).subscribe(data => {
+
+    if (!_.isEmpty(imageId)) {
+      formData.append('image', dataURItoBlob(url), 'new.jpeg');
+      observer = this.sparePartsProvider.updateSparePartImage(companyId, this.sparePartId, imageId, formData);
+    } else {
+      formData.append('image', dataURItoBlob(url), imageId + '.jpeg');
+      observer = this.sparePartsProvider.addSparePartImage(companyId, this.sparePartId, formData);
+    }
+
+    observer.subscribe(data => {
+      this.spinner.hide();
       this.presentSuccessAlert("Images has been updated successfully");
     }, error => { this.spinner.hide() });
   }
@@ -129,7 +139,7 @@ export class EditSparePartsPage {
       "manufacturer_id": this.manufacturer
     };
     this.spinner.show();
-    this.sparePartsProvider.updateSpearePartDetails(companyId, this.sparePartId, params).subscribe(data => {
+    this.sparePartsProvider.updateSparePartDetails(companyId, this.sparePartId, params).subscribe(data => {
       this.spinner.hide();
       this.presentSuccessAlert("Details has been updated successfully");
     }, error => { this.spinner.hide() });

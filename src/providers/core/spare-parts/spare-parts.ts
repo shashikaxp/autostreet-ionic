@@ -43,7 +43,12 @@ export class SparePartsProvider {
     return this.apiProvider.httpPutCall(url, params);
   }
 
-  updateSpearePartDetails(companyId, partId, params) {
+  addSparePartImage(companyId, partId, params) {
+    let url = this.apiProvider.getHttpUrl(ENDPOINTS.PARTS.ADD_NEW_IMAGE, companyId, partId);
+    return this.apiProvider.httpPostCall(url, params);
+  }
+
+  updateSparePartDetails(companyId, partId, params) {
     let url = this.apiProvider.getHttpUrl(ENDPOINTS.PARTS.DETAILS_UPDATE, companyId, partId);
     return this.apiProvider.httpPutCall(url, params);
   }

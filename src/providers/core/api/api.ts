@@ -18,6 +18,7 @@ export class ApiProvider {
           observer.next(data);
         },(err) => {
           this.errorHandler.handle(err);
+          observer.error(err);
         });
     });
   }
@@ -29,6 +30,7 @@ export class ApiProvider {
           observer.next(data);
         },(err) => {
           this.errorHandler.handle(err);
+          observer.error(err);
         });
     });
   }
@@ -40,6 +42,7 @@ export class ApiProvider {
           observer.next(data);
         },(err) => {
           this.errorHandler.handle(err);
+          observer.error(err);
         });
     });
   }

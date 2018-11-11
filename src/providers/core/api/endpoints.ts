@@ -22,6 +22,7 @@ export const ENDPOINTS = {
     ADD: API_URL +  "companies/{{param1}}/spare-parts",
     DETAILS: API_URL + "companies/{{param1}}/spare-parts/{{param2}}",
     IMAGE_UPDATE: API_URL + "companies/{{param1}}/spare-parts/{{param2}}/images/{{param3}}",
+    ADD_NEW_IMAGE: API_URL + "companies/{{param1}}/spare-parts/{{param2}}/images",
     DETAILS_UPDATE : API_URL + "companies/{{param1}}/spare-parts/{{param2}}"
   }
 
