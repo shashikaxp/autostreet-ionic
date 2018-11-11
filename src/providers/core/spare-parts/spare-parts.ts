@@ -43,4 +43,9 @@ export class SparePartsProvider {
     return this.apiProvider.httpPutCall(url, params);
   }
 
+  updateSpearePartDetails(companyId, partId, params) {
+    let url = this.apiProvider.getHttpUrl(ENDPOINTS.PARTS.DETAILS_UPDATE, companyId, partId);
+    return this.apiProvider.httpPutCall(url, params);
+  }
+
 }

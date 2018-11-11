@@ -2,6 +2,12 @@
 
   <ion-navbar>
     <ion-title>add-spare-parts</ion-title>
+    <ion-buttons right>
+      <button class="settings-side-buttons" ion-button
+              (click)="loadPreviewPage()">
+        Apply
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -77,11 +83,6 @@
         </ion-col>
       </ion-row>
 
-    </ion-row>
-
-    <ion-row margin-bottom>
-      <button ion-button class="center" (click)="loadPreviewPage()">Preview
-      </button>
     </ion-row>
 
   </ion-grid>

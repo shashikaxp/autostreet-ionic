@@ -16,7 +16,7 @@ export class HttpErrorHandlerProvider {
   }
 
   handle(error: HttpErrorResponse) {
-    let errorMessage = _.get(error, 'error.message', "Server Error");
+    let errorMessage = _.get(error, 'error.error', "Server Error");
     let status = _.get(error, 'status', "404");
 
     if (status.toString() === "401") {

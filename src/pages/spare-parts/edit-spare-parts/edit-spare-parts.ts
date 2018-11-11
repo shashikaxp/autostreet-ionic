@@ -11,6 +11,7 @@ import _ from "lodash";
 import { Storage } from "@ionic/storage";
 import { STORAGE } from "../../../config";
 import { dataURItoBlob } from "../../../providers/util/blob-convertor/blob-convertor";
+import { SpinnerVisibilityService } from "ng-http-loader/services/spinner-visibility.service";
 
 @IonicPage()
 @Component({
@@ -38,6 +39,7 @@ export class EditSparePartsPage {
               private storage: Storage,
               private viewCtrl: ViewController,
               private alertCtrl: AlertController,
+              private spinner: SpinnerVisibilityService,
               private sparePartsProvider: SparePartsProvider) {
 
     sparePartsProvider.getManufacturers().subscribe(data => {
@@ -109,14 +111,33 @@ export class EditSparePartsPage {
     let companyId = await this.storage.get(STORAGE.COMPANY_ID);
     let formData = new FormData();
     formData.append('image', dataURItoBlob(url), imageId + '.jpeg');
+    this.spinner.show();
     this.sparePartsProvider.updateSparePartImage(companyId, this.sparePartId, imageId, formData).subscribe(data => {
-      this.presentSuccessAlert();
-    });
+      this.presentSuccessAlert("Images has been updated successfully");
+    }, error => { this.spinner.hide() });
   }
 
-  presentSuccessAlert() {
+  async updateDetails() {
+    let companyId = await this.storage.get(STORAGE.COMPANY_ID);
+    let params = {
+      "title": this.title,
+      "description": this.description,
+      "model_id": this.model,
+      "category_id": this.category,
+      "condition": this.condition,
+      "price": this.price,
+      "manufacturer_id": this.manufacturer
+    };
+    this.spinner.show();
+    this.sparePartsProvider.updateSpearePartDetails(companyId, this.sparePartId, params).subscribe(data => {
+      this.spinner.hide();
+      this.presentSuccessAlert("Details has been updated successfully");
+    }, error => { this.spinner.hide() });
+  }
+
+  presentSuccessAlert(message) {
     let alert = this.alertCtrl.create({
-      message: 'Upload Successful',
+      message: message,
       buttons: [
         {
           text: 'Ok',

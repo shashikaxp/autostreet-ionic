@@ -1,11 +1,22 @@
+<spinner
+  backgroundColor="#488aff"
+  spinner="sk-spinner-pulse"
+>
+</spinner>
 <ion-header>
 
   <ion-navbar>
-    <ion-title>edit-spare-parts</ion-title>
-    <ion-buttons right>
+    <ion-buttons left>
       <button class="settings-side-buttons" ion-button
               (click)="closeModal()">
         Close
+      </button>
+    </ion-buttons>
+    <ion-title>edit-spare-parts</ion-title>
+    <ion-buttons right>
+      <button class="settings-side-buttons" ion-button
+              (click)="updateDetails()">
+        Apply
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -89,10 +100,6 @@
       </ion-row>
 
     </ion-row>
-
-    <ion-row margin-bottom>
-      <button ion-button class="center">Update</button>
-    </ion-row>
-
+    
   </ion-grid>
 </ion-content>
