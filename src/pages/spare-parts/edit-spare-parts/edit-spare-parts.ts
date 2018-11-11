@@ -112,7 +112,6 @@ export class EditSparePartsPage {
   async handleImage(event, imageId) {
 
     if (event.type === 'updateOrAdd') {
-      console.log(JSON.stringify(event));
       this.updateOrAddImage(event.url, imageId);
     } else if (event.type === 'delete') {
       this.deleteImage(imageId);

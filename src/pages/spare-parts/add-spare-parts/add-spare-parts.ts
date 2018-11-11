@@ -64,10 +64,10 @@ export class AddSparePartsPage {
     return _.get(this.manufacturer, 'id', false);
   }
 
-  takeSpatePartImage(url, id) {
+  takeSpatePartImage(event, id) {
       let imageObject = _.find(this.imagesArray, {'id': id});
       if (typeof imageObject !== 'undefined') {
-        imageObject.url = url
+        imageObject.url = event.url
       }
   }
 

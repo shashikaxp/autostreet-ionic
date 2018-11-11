@@ -10,6 +10,7 @@ import { AlertController } from "ionic-angular";
 export class CameraImageComponent {
 
   @Input() imageInputSrc: string;
+  @Input() type: string;
   @Output() changeImage = new EventEmitter<any>();
   private cameraOptions;
   public imageSrc;

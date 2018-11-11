@@ -78,7 +78,8 @@
         <ion-col col-6 *ngFor="let img of imagesArray">
           <camera-image
             (changeImage)="takeSpatePartImage($event, img.id)"
-            [imageInputSrc]="img.url">
+            [imageInputSrc]="img.url"
+            [type]="'add'">
           </camera-image>
         </ion-col>
       </ion-row>

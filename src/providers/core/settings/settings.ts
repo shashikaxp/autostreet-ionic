@@ -5,7 +5,6 @@ import { TranslateService } from "@ngx-translate/core";
 export class SettingsProvider {
 
   constructor(private translate: TranslateService) {
-    console.log('Hello SettingsProvider Provider');
   }
 
   getCurrentLanguage() {
