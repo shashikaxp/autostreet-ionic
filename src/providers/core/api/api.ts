@@ -47,6 +47,18 @@ export class ApiProvider {
     });
   }
 
+  httpDeleteCall(url, header?) {
+    return Observable.create(observer => {
+      this.http.delete(url, header)
+        .subscribe(data => {
+          observer.next(data);
+        },(err) => {
+          this.errorHandler.handle(err);
+          observer.error(err);
+        });
+    });
+  }
+
   getHttpUrl(url, ...variables) {
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     let compiled =  _.template(url);

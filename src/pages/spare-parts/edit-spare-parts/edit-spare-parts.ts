@@ -75,6 +75,7 @@ export class EditSparePartsPage {
 
   async getSparePartDetails() {
     let companyId = await this.storage.get(STORAGE.COMPANY_ID);
+    this.spinner.show();
     this.sparePartsProvider.getDetails(companyId, this.sparePartId).subscribe(data => {
       this.category = data.category.id;
       this.model = data.model.id;
@@ -85,6 +86,7 @@ export class EditSparePartsPage {
       this.price = data.price;
       this.imagesArray = this.formatImagesArray(data.images);
       this.loadModels();
+      this.spinner.hide();
     });
   }
 
@@ -107,7 +109,18 @@ export class EditSparePartsPage {
     this.viewCtrl.dismiss();
   }
 
-  async updateImage(url, imageId) {
+  async handleImage(event, imageId) {
+
+    if (event.type === 'updateOrAdd') {
+      console.log(JSON.stringify(event));
+      this.updateOrAddImage(event.url, imageId);
+    } else if (event.type === 'delete') {
+      this.deleteImage(imageId);
+    }
+
+  }
+
+  async updateOrAddImage(url, imageId) {
     let observer;
     let companyId = await this.storage.get(STORAGE.COMPANY_ID);
     let formData = new FormData();
@@ -124,6 +137,14 @@ export class EditSparePartsPage {
     observer.subscribe(data => {
       this.spinner.hide();
       this.presentSuccessAlert("Images has been updated successfully");
+    }, error => { this.spinner.hide() });
+  }
+
+  async deleteImage(imageId) {
+    let companyId = await this.storage.get(STORAGE.COMPANY_ID);
+    this.sparePartsProvider.deleteSparePartImage(companyId, this.sparePartId, imageId).subscribe(data => {
+      this.spinner.hide();
+      this.presentSuccessAlert("Images has been deleted successfully");
     }, error => { this.spinner.hide() });
   }
 
@@ -155,6 +176,7 @@ export class EditSparePartsPage {
         }
       ]
     });
+    alert.onDidDismiss(data => { this.getSparePartDetails() });
     alert.present();
   }
 

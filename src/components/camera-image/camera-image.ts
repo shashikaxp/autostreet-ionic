@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import _ from "lodash";
 import { Camera } from "@ionic-native/camera";
+import { AlertController } from "ionic-angular";
 
 @Component({
   selector: 'camera-image',
@@ -9,11 +10,12 @@ import { Camera } from "@ionic-native/camera";
 export class CameraImageComponent {
 
   @Input() imageInputSrc: string;
-  @Output() changeImage = new EventEmitter<string>();
+  @Output() changeImage = new EventEmitter<any>();
   private cameraOptions;
   public imageSrc;
 
-  constructor(private camera: Camera) {
+  constructor(private camera: Camera,
+              private alertCtrl: AlertController) {
 
     this.imageSrc = this.imageInputSrc;
 
@@ -42,12 +44,47 @@ export class CameraImageComponent {
   }
 
   takeSparePartImage() {
+
     this.camera.getPicture(this.cameraOptions).then((imageData) => {
       this.imageInputSrc = 'data:image/jpeg;base64,' + imageData;
-      this.changeImage.emit('data:image/jpeg;base64,' + imageData);
+
+      let params = {
+        type: "updateOrAdd",
+        url: this.imageInputSrc
+      };
+
+      this.changeImage.emit(params);
     }, (err) => {
       // Handle error
     });
+  }
+
+  deleteImage() {
+    let params = {
+      type: "delete",
+      url: this.imageInputSrc
+    };
+    this.changeImage.emit(params);
+  }
+
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm delete',
+      message: 'Do you want to delete this image?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.deleteImage();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 }

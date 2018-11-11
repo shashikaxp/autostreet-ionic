@@ -2,6 +2,9 @@
   <img-loader [src]="getImageSrc('name')" [spinner]="true"
               [useImg]="true"
               class="image-container">
+    <button *ngIf="isValidUrl()"small
+            class="delete-button"
+            (click)="presentConfirm()">X</button>
   </img-loader>
   <button *ngIf="!isValidUrl()" (click)="takeSparePartImage()" small
           class="edit-button">Add</button>

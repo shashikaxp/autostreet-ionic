@@ -48,6 +48,11 @@ export class SparePartsProvider {
     return this.apiProvider.httpPostCall(url, params);
   }
 
+  deleteSparePartImage(companyId, partId, imageId) {
+    let url = this.apiProvider.getHttpUrl(ENDPOINTS.PARTS.DELETE_IMAGE, companyId, partId, imageId);
+    return this.apiProvider.httpDeleteCall(url);
+  }
+
   updateSparePartDetails(companyId, partId, params) {
     let url = this.apiProvider.getHttpUrl(ENDPOINTS.PARTS.DETAILS_UPDATE, companyId, partId);
     return this.apiProvider.httpPutCall(url, params);

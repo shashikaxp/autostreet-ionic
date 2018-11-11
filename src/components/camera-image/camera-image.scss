@@ -1,4 +1,9 @@
 camera-image {
+
+  .image-container {
+    position: relative;
+  }
+
   .edit-button {
     text-align: center;
     width: 100%;
@@ -6,4 +11,14 @@ camera-image {
     background: #498aff;
     color: white;
   }
+
+  .delete-button {
+    text-align: center;
+    position: absolute;
+    padding: 7px;
+    background: #d46060;
+    color: white;
+    right: 0;
+  }
+
 }
