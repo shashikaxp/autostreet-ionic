@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons right>
+      <button class="settings-side-buttons" ion-button>
+        Apply
+      </button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <form #formCtrl="ngForm">
+    <div align="center">
+      <img class="profile-image"
+           src="../../assets/imgs/pages/profile/profile-pic.png">
+      <h4>ABC Pvt LTD</h4>
+    </div>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="person.name" name="name" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Address</ion-label>
+        <ion-input type="text" [(ngModel)]="person.name" name="name" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>City</ion-label>
+        <ion-input type="text" [(ngModel)]="person.name" name="name" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>District</ion-label>
+        <ion-input type="text" [(ngModel)]="person.name" name="name" required></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
