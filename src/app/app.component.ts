@@ -35,7 +35,7 @@ export class MyApp {
       this.splashScreen.hide();
       this.checkTokenValidity().then(validToken => {
         if (validToken) {
-          this.rootPage = "HomePage"
+          this.rootPage = "TabsPage"
         } else {
           this.rootPage = "LoginPage"
         }
