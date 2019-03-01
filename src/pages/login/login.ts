@@ -17,7 +17,7 @@ export class LoginPage {
   }
 
    login(loginForm) {
-   this.navCtrl.setRoot("HomePage", {}, {animate: true, direction: 'forward'})
+   this.navCtrl.setRoot("TabsPage", {}, {animate: true, direction: 'forward'})
     // this.authProvider.login(loginForm.value).subscribe(async data => {
     //   await this.storage.set(STORAGE.TOKEN, data.token);
     //   await this.storage.set(STORAGE.COMPANY_ID, data.company_id);
