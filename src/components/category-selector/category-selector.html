@@ -1,4 +1,5 @@
-<ion-segment padding-bottom (ionChange)="segmentChanged($event)">
+<ion-segment padding-bottom (ionChange)="segmentChanged($event)"
+             [(ngModel)]="selectedType">
   <ion-segment-button value="vehicle">
     Vehicles
   </ion-segment-button>

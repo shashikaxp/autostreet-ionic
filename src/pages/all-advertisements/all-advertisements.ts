@@ -8,11 +8,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AllAdvertisementsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public selectedItemType;
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams) {
   }
 
   onItemChanged(item) {
-    console.log('ionViewDidLoad FindItemsPage', item);
+    this.selectedItemType = item;
   }
 
 }

@@ -9,10 +9,7 @@
 <ion-content padding>
 
   <category-selector (itemChanged)="onItemChanged($event)"></category-selector>
-
-  <ion-fab right bottom>
-    <button ion-fab color="light"><ion-icon name="options"></ion-icon></button>
-  </ion-fab>
+  <filters [itemType]="selectedItemType"></filters>
 
   <ion-list>
     <ion-item>
