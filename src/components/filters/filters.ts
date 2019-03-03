@@ -3,7 +3,11 @@ import { ModalController } from "ionic-angular";
 
 @Component({
   selector: 'filters',
-  templateUrl: 'filters.html'
+  templateUrl: 'filters.html',
+  styles: [`
+    :host { right: 15px; bottom: 15px; }
+    :host ion-fab { position: static; }
+  `]
 })
 export class FiltersComponent {
 
