@@ -1,0 +1,13 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>new-item</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <category-selector (itemChanged)="onItemChanged($event)"></category-selector>
+  <new-item-form [itemType]="selectedItemType"></new-item-form>
+</ion-content>

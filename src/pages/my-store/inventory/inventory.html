@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <category-selector (itemChanged)="onItemChanged($event)"></category-selector>
-  <filters [itemType]="selectedItemType"></filters>
+  <filters ion-fixed [itemType]="selectedItemType"></filters>
 
   <ion-list>
     <ion-item>
