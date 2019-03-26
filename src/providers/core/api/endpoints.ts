@@ -7,10 +7,19 @@ export const ENDPOINTS = {
     LOGIN: API_URL + "users/tokens"
   },
 
+  // form fields
+  FORM: {
+    DISTRICTS: API_URL + "districts",
+    CITY: API_URL + "districts/{{param1}}/cities",
+    BRANDS: API_URL + "brands",
+    MODEL: API_URL + "brands/{{param1}}/models",
+  },
+
+
   // company endpoints
   COMPANY: {
     REGISTER: API_URL + "companies",
-    PARTS_LIST : API_URL + "companies/{{param1}}/spare-parts?page={{param2}}&limit={{param3}}"
+    PARTS_LIST: API_URL + "companies/{{param1}}/spare-parts?page={{param2}}&limit={{param3}}"
   },
 
   //Spare Parts
@@ -19,12 +28,12 @@ export const ENDPOINTS = {
     MODELS: API_URL + "manufacturers/{{param1}}/models",
     CATEGORIES: API_URL + "spare-parts/categories",
     CONDITIONS: API_URL + "spare-parts/conditions",
-    ADD: API_URL +  "companies/{{param1}}/spare-parts",
+    ADD: API_URL + "companies/{{param1}}/spare-parts",
     DETAILS: API_URL + "companies/{{param1}}/spare-parts/{{param2}}",
     IMAGE_UPDATE: API_URL + "companies/{{param1}}/spare-parts/{{param2}}/images/{{param3}}",
     ADD_NEW_IMAGE: API_URL + "companies/{{param1}}/spare-parts/{{param2}}/images",
     DELETE_IMAGE: API_URL + "companies/{{param1}}/spare-parts/{{param2}}/images/{{param3}}",
-    DETAILS_UPDATE : API_URL + "companies/{{param1}}/spare-parts/{{param2}}"
+    DETAILS_UPDATE: API_URL + "companies/{{param1}}/spare-parts/{{param2}}"
   }
 
 };

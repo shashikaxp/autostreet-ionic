@@ -4,22 +4,25 @@ import { IonicModule } from "ionic-angular";
 import { IonicImageLoader } from "ionic-image-loader";
 import { CategorySelectorComponent } from './category-selector/category-selector';
 import { FiltersComponent } from './filters/filters';
-import { NewItemFormComponent } from './new-item-form/new-item-form';
-import { FieldModelComponent } from './new-item-form/field-model/field-model';
+import { ItemFormComponent } from './item-form/item-form';
+import { FieldBrandModelComponent } from './item-form/field-brand-model/field-brand-model';
+import { FieldDistrictCityComponent } from './item-form/field-district-city/field-district-city';
 
 @NgModule({
   declarations: [CameraImageComponent,
     CategorySelectorComponent,
     FiltersComponent,
-    NewItemFormComponent,
-    FieldModelComponent],
+    ItemFormComponent,
+    FieldBrandModelComponent,
+    FieldDistrictCityComponent],
   imports: [IonicModule,
             IonicImageLoader],
   exports: [CameraImageComponent,
     CategorySelectorComponent,
     FiltersComponent,
-    NewItemFormComponent,
-    FieldModelComponent]
+    ItemFormComponent,
+    FieldBrandModelComponent,
+    FieldDistrictCityComponent]
 })
 export class ComponentsModule {
 }

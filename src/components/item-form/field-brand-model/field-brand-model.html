@@ -1,0 +1,18 @@
+<ion-item>
+  <ion-label>Brand</ion-label>
+  <ion-select [(ngModel)]="selectedBrand" [name]="formFields.Brand"
+              (ionChange)="getModels(selectedBrand)">
+    <ion-option *ngFor="let b of brands"
+                [value]="b.id">{{b.name}}
+    </ion-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-label>Model</ion-label>
+  <ion-select [(ngModel)]="selectedModel" [name]="formFields.Model">
+    <ion-option *ngFor="let m of models"
+                [value]="m.id">{{m.name}}
+    </ion-option>
+  </ion-select>
+</ion-item>

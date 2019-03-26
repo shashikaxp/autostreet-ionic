@@ -23,6 +23,8 @@ import { TokenInterceptorProvider } from "../providers/util/token-interceptor/to
 import { NgHttpLoaderModule } from "ng-http-loader/ng-http-loader.module";
 import { Camera } from "@ionic-native/camera";
 import { IonicImageLoader } from "ionic-image-loader";
+import { BrandsModelProvider } from '../providers/core/form-fields/brands-model/brands-model';
+import { DistrictCityProvider } from '../providers/core/form-fields/district-city/district-city';
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -66,7 +68,9 @@ export function setTranslateLoader(http: HttpClient) {
       useClass: TokenInterceptorProvider,
       multi: true
     },
-    Camera
+    Camera,
+    BrandsModelProvider,
+    DistrictCityProvider
   ]
 })
 export class AppModule {}
