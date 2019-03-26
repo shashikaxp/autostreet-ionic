@@ -1,9 +1,9 @@
 <ion-segment padding-bottom (ionChange)="segmentChanged($event)"
              [(ngModel)]="selectedType">
-  <ion-segment-button value="vehicle">
+  <ion-segment-button [value]="itemTypes.VEHICLE">
     Vehicles
   </ion-segment-button>
-  <ion-segment-button value="spare-part">
+  <ion-segment-button [value]="itemTypes.SPARE_PART">
     Spare Parts
   </ion-segment-button>
 </ion-segment>

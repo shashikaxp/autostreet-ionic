@@ -1,7 +1,11 @@
-export const formFields  = {
+import { ITEM_TYPES } from "../../config";
+
+export const formFields = {
   Title: 'title',
   Price: "price",
   City: "city",
+  District: "district",
+  Brand: "brand",
   Model: "model",
   Year: "year",
   ItemType: "item_type",
@@ -16,7 +20,12 @@ export const formFields  = {
   Description: "description"
 };
 
-export const formConfig = {
-  'spare-part': [formFields.Title, formFields.Price, formFields.Model, formFields.City ],
-  'vehicle': [formFields.Price, formFields.Model, formFields.Description]
-};
+
+export let formConfig = {};
+
+formConfig[ITEM_TYPES.VEHICLE] =
+  [formFields.Title, formFields.Price, formFields.Model, formFields.Year];
+
+formConfig[ITEM_TYPES.SPARE_PART] =
+  [formFields.Price, formFields.City, formFields.Model,
+    formFields.Description, formFields.ItemCategory, formFields.Condition];

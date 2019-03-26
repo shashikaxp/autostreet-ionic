@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ITEM_TYPES } from "../../config";
 
 @Component({
   selector: 'category-selector',
@@ -8,7 +9,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class CategorySelectorComponent implements OnInit{
 
   @Output() itemChanged = new EventEmitter<any>();
-  public selectedType = 'vehicle';
+  public itemTypes = ITEM_TYPES;
+  public selectedType = this.itemTypes.VEHICLE;
 
   ngOnInit() {
     this.itemChanged.emit(this.selectedType);
