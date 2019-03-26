@@ -23,9 +23,7 @@ export class FieldBrandModelComponent {
   constructor(private brandsAndModelProvider : BrandsModelProvider) {
   }
 
-
   ngOnInit() {
-    console.log('redda');
     this.selectedBrand = this.defaultBrand;
     this.selectedModel = this.defaultModel;
     this.getBrands();

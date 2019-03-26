@@ -25,6 +25,8 @@ import { Camera } from "@ionic-native/camera";
 import { IonicImageLoader } from "ionic-image-loader";
 import { BrandsModelProvider } from '../providers/core/form-fields/brands-model/brands-model';
 import { DistrictCityProvider } from '../providers/core/form-fields/district-city/district-city';
+import { CategoryProvider } from '../providers/core/form-fields/category/category';
+import { ConditionProvider } from '../providers/core/form-fields/condition/condition';
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -70,7 +72,9 @@ export function setTranslateLoader(http: HttpClient) {
     },
     Camera,
     BrandsModelProvider,
-    DistrictCityProvider
+    DistrictCityProvider,
+    CategoryProvider,
+    ConditionProvider
   ]
 })
 export class AppModule {}
