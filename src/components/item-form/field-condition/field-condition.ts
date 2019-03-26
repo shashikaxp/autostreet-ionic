@@ -26,6 +26,6 @@ export class FieldConditionComponent {
         this.conditions = data.conditions;
       })
     }
-
   }
+
 }

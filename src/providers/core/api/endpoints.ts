@@ -13,6 +13,9 @@ export const ENDPOINTS = {
     CITY: API_URL + "districts/{{param1}}/cities",
     BRANDS: API_URL + "brands",
     MODEL: API_URL + "brands/{{param1}}/models",
+    CATEGORY: API_URL + "items/categories?type={{param1}}",
+    CONDITION: API_URL + "items/conditions?type={{param1}}",
+    FUEL: API_URL + 'items/fuel-types'
   },
 
 

@@ -27,5 +27,5 @@ formConfig[ITEM_TYPES.VEHICLE] =
   [formFields.Title, formFields.Price, formFields.Model, formFields.Year];
 
 formConfig[ITEM_TYPES.SPARE_PART] =
-  [formFields.Price, formFields.City, formFields.Model,
+  [formFields.Price, formFields.City, formFields.Model, formFields.Fuel,
     formFields.Description, formFields.ItemCategory, formFields.Condition];

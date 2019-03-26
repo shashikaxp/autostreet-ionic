@@ -1,0 +1,8 @@
+<ion-item>
+  <ion-label>Fuel Type</ion-label>
+  <ion-select [(ngModel)]="defaultCondition" [name]="formFields.Fuel">
+    <ion-option *ngFor="let f of fuelTypes"
+                [value]="f.key">{{f.value}}
+    </ion-option>
+  </ion-select>
+</ion-item>

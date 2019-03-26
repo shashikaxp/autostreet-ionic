@@ -24,7 +24,7 @@ export class FieldCategoryComponent {
     console.log(itemType);
     if(itemType) {
       this.categoryProvider.getCategories(itemType).subscribe(data => {
-        this.categories = data.categoories;
+        this.categories = data.categories;
       })
     }
 

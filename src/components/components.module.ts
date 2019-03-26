@@ -9,6 +9,7 @@ import { FieldBrandModelComponent } from './item-form/field-brand-model/field-br
 import { FieldDistrictCityComponent } from './item-form/field-district-city/field-district-city';
 import { FieldCategoryComponent } from './item-form/field-category/field-category';
 import { FieldConditionComponent } from './item-form/field-condition/field-condition';
+import { FieldFuelComponent } from './item-form/field-fuel/field-fuel';
 
 @NgModule({
   declarations: [CameraImageComponent,
@@ -18,7 +19,8 @@ import { FieldConditionComponent } from './item-form/field-condition/field-condi
     FieldBrandModelComponent,
     FieldDistrictCityComponent,
     FieldCategoryComponent,
-    FieldConditionComponent],
+    FieldConditionComponent,
+    FieldFuelComponent],
   imports: [IonicModule,
             IonicImageLoader],
   exports: [CameraImageComponent,
@@ -28,7 +30,8 @@ import { FieldConditionComponent } from './item-form/field-condition/field-condi
     FieldBrandModelComponent,
     FieldDistrictCityComponent,
     FieldCategoryComponent,
-    FieldConditionComponent]
+    FieldConditionComponent,
+    FieldFuelComponent]
 })
 export class ComponentsModule {
 }

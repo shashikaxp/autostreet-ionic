@@ -27,6 +27,7 @@ import { BrandsModelProvider } from '../providers/core/form-fields/brands-model/
 import { DistrictCityProvider } from '../providers/core/form-fields/district-city/district-city';
 import { CategoryProvider } from '../providers/core/form-fields/category/category';
 import { ConditionProvider } from '../providers/core/form-fields/condition/condition';
+import { FuelProvider } from '../providers/core/form-fields/fuel/fuel';
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -74,7 +75,8 @@ export function setTranslateLoader(http: HttpClient) {
     BrandsModelProvider,
     DistrictCityProvider,
     CategoryProvider,
-    ConditionProvider
+    ConditionProvider,
+    FuelProvider
   ]
 })
 export class AppModule {}
