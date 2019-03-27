@@ -24,8 +24,8 @@ export const formFields = {
 export let formConfig = {};
 
 formConfig[ITEM_TYPES.VEHICLE] =
-  [formFields.Title, formFields.Price, formFields.Model, formFields.Year];
+  [formFields.Title, formFields.Price, formFields.Model, formFields.Year, formFields.ItemCategory];
 
 formConfig[ITEM_TYPES.SPARE_PART] =
-  [formFields.Price, formFields.City, formFields.Model, formFields.Fuel,
-    formFields.Description, formFields.ItemCategory, formFields.Condition];
+  [formFields.Price, formFields.City, formFields.Model, formFields.Fuel, formFields.Transmission, formFields.Description,
+    formFields.Description, formFields.ItemCategory, formFields.Condition, formFields.Mileage, formFields.EngineCapacity];

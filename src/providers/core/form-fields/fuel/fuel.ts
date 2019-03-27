@@ -7,7 +7,6 @@ import { ApiProvider } from "../../api/api";
 export class FuelProvider {
 
   constructor(public apiProvider: ApiProvider) {
-    console.log('Hello FuelProvider Provider');
   }
 
   getFuelTypes() {

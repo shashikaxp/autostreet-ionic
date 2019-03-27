@@ -9,6 +9,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class NewItemPage {
 
   public selectedItemType;
+  public formType = 'Add';
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams) {
@@ -16,6 +17,7 @@ export class NewItemPage {
 
   onItemChanged(item) {
     this.selectedItemType = item;
+    this.formType = 'Add';
   }
 
 }

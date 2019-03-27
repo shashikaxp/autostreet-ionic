@@ -9,5 +9,6 @@
 
 <ion-content padding>
   <category-selector (itemChanged)="onItemChanged($event)"></category-selector>
-  <new-item-form [itemType]="selectedItemType"></new-item-form>
+  <new-item-form [itemType]="selectedItemType"
+                 [formType]="formType"></new-item-form>
 </ion-content>

@@ -15,7 +15,8 @@ export const ENDPOINTS = {
     MODEL: API_URL + "brands/{{param1}}/models",
     CATEGORY: API_URL + "items/categories?type={{param1}}",
     CONDITION: API_URL + "items/conditions?type={{param1}}",
-    FUEL: API_URL + 'items/fuel-types'
+    FUEL: API_URL + 'items/fuel-types',
+    TRANSMISSION: API_URL + 'items/transmissions'
   },
 
 
