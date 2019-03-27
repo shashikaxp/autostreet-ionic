@@ -28,6 +28,7 @@ import { DistrictCityProvider } from '../providers/core/form-fields/district-cit
 import { CategoryProvider } from '../providers/core/form-fields/category/category';
 import { ConditionProvider } from '../providers/core/form-fields/condition/condition';
 import { FuelProvider } from '../providers/core/form-fields/fuel/fuel';
+import { TransmissionProvider } from '../providers/core/form-fields/transmission/transmission';
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -76,7 +77,8 @@ export function setTranslateLoader(http: HttpClient) {
     DistrictCityProvider,
     CategoryProvider,
     ConditionProvider,
-    FuelProvider
+    FuelProvider,
+    TransmissionProvider
   ]
 })
 export class AppModule {}
