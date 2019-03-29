@@ -26,7 +26,7 @@ export class RegisterPage {
       try {
         await this.storageProvider.set(STORAGE.COMPANY_ID, sellerData.company_id);
         await this.storageProvider.set(STORAGE.TOKEN, sellerData.user.token);
-        this.navCtrl.push("TabsPage");
+        this.navCtrl.setRoot("TabsPage", {}, {animate: true, direction: 'forward'})
       } catch (e) {
         this.log.error('Error occurred while saving the login data', e)
       }
