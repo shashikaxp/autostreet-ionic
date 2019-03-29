@@ -7,7 +7,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { Spinkit } from "ng-http-loader/spinkits";
 import { STORAGE } from "../config";
 import _ from "lodash";
-import { Storage } from "@ionic/storage";
+import { StorageProvider } from "../providers/storage/storage";
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +21,7 @@ export class MyApp {
               public statusBar: StatusBar,
               public splashScreen: SplashScreen,
               public translate: TranslateService,
-              public storage: Storage) {
+              public storageProvider: StorageProvider) {
     this.initializeApp();
   }
 
@@ -47,8 +47,13 @@ export class MyApp {
     this.nav.push(pageName)
   }
 
+  async logout() {
+    await this.storageProvider.clear();
+    this.nav.setRoot("LoginPage", {}, {animate: true, direction: 'forward'});
+  }
+
   async checkTokenValidity() {
-    let token = await this.storage.get(STORAGE.TOKEN);
+    let token = await this.storageProvider.get(STORAGE.TOKEN);
     return !_.isEmpty(token);
   }
 
