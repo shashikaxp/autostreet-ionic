@@ -20,4 +20,8 @@ export class StorageProvider {
     return this.storage.remove(key)
   }
 
+  clear() {
+    return this.storage.clear();
+  }
+
 }
