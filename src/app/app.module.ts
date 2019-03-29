@@ -29,6 +29,8 @@ import { CategoryProvider } from '../providers/core/form-fields/category/categor
 import { ConditionProvider } from '../providers/core/form-fields/condition/condition';
 import { FuelProvider } from '../providers/core/form-fields/fuel/fuel';
 import { TransmissionProvider } from '../providers/core/form-fields/transmission/transmission';
+import { SellerProvider } from '../providers/core/seller/seller';
+import { StorageProvider } from '../providers/storage/storage';
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -78,7 +80,9 @@ export function setTranslateLoader(http: HttpClient) {
     CategoryProvider,
     ConditionProvider,
     FuelProvider,
-    TransmissionProvider
+    TransmissionProvider,
+    SellerProvider,
+    StorageProvider
   ]
 })
 export class AppModule {}

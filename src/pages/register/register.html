@@ -11,60 +11,53 @@
   <ion-grid>
     <ion-row>
       <form col-12 #registerForm="ngForm" (submit)="register(registerForm)">
+        <ion-item no-padding col-12>
+          <ion-input ngModel
+                     type="text" name="name"
+                     placeholder="Company Name"></ion-input>
+        </ion-item>
+        <ion-item no-padding col-12>
+          <ion-input ngModel
+                     type="text" name="address_line1"
+                     placeholder="Address Line 1"></ion-input>
+        </ion-item>
+        <ion-item no-padding col-12>
+          <ion-input ngModel
+                     type="text" name="address_line2"
+                     placeholder="Address Line 2"></ion-input>
+        </ion-item>
+        <ion-item no-padding col-12>
+          <ion-input ngModel
+                     type="number" name="telephone"
+                     placeholder="Telephone"></ion-input>
+        </ion-item>
+        <ion-item no-padding col-12>
+          <ion-input ngModel
+                     type="email" name="email"
+                     placeholder="Email"></ion-input>
+        </ion-item>
+        <ion-item no-padding col-12>
+          <ion-input ngModel
+                     type="text" name="website"
+                     placeholder="Website"></ion-input>
+        </ion-item>
         <ion-col>
-          <ion-item>
-            <ion-label floating>Company Name</ion-label>
-            <ion-input ngModel name="name" type="text"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-label floating>Address Line 1</ion-label>
-            <ion-input ngModel name="address_line1" type="text"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-label floating>Address Line 2</ion-label>
-            <ion-input ngModel name="address_line2" type="text"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-label floating>City</ion-label>
-            <ion-input ngModel name="city" type="text"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-label floating>Telephone</ion-label>
-            <ion-input ngModel name="telephone" type="text"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-label floating>Email</ion-label>
-            <ion-input ngModel name="email" type="email"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item>
-            <ion-label floating>Website</ion-label>
-            <ion-input ngModel name="website" type="email"></ion-input>
-          </ion-item>
+          <field-district-city
+            [defaultDistrict]=""
+            [defaultCity]="">
+          </field-district-city>
         </ion-col>
         <fieldset ngModelGroup="user">
           <ion-col>
-            <ion-item>
-              <ion-label floating>Username</ion-label>
-              <ion-input ngModel name="username" type="text"></ion-input>
+            <ion-item no-padding col-12>
+              <ion-input ngModel
+                         type="text" name="username"
+                         placeholder="Username"></ion-input>
             </ion-item>
-          </ion-col>
-          <ion-col>
-            <ion-item>
-              <ion-label floating>Password</ion-label>
-              <ion-input ngModel name="password"
-                         type="password"></ion-input>
+            <ion-item no-padding col-12>
+              <ion-input ngModel
+                         type="password" name="password"
+                         placeholder="Password"></ion-input>
             </ion-item>
           </ion-col>
         </fieldset>

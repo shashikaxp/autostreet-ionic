@@ -38,6 +38,10 @@ export const ENDPOINTS = {
     ADD_NEW_IMAGE: API_URL + "companies/{{param1}}/spare-parts/{{param2}}/images",
     DELETE_IMAGE: API_URL + "companies/{{param1}}/spare-parts/{{param2}}/images/{{param3}}",
     DETAILS_UPDATE: API_URL + "companies/{{param1}}/spare-parts/{{param2}}"
+  },
+
+  SELLERS: {
+    REGISTER: API_URL + "sellers"
   }
 
 };
