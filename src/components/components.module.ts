@@ -11,6 +11,9 @@ import { FieldCategoryComponent } from './item-form/field-category/field-categor
 import { FieldConditionComponent } from './item-form/field-condition/field-condition';
 import { FieldFuelComponent } from './item-form/field-fuel/field-fuel';
 import { FieldTransmissionComponent } from './item-form/field-transmission/field-transmission';
+import { ItemAddImagesComponent } from './item-add-images/item-add-images';
+import { ItemUpdateDeleteImagesComponent } from './item-update-delete-images/item-update-delete-images';
+import { FieldContactsComponent } from './item-form/field-contacts/field-contacts';
 
 @NgModule({
   declarations: [CameraImageComponent,
@@ -22,7 +25,10 @@ import { FieldTransmissionComponent } from './item-form/field-transmission/field
     FieldCategoryComponent,
     FieldConditionComponent,
     FieldFuelComponent,
-    FieldTransmissionComponent],
+    FieldTransmissionComponent,
+    ItemAddImagesComponent,
+    ItemUpdateDeleteImagesComponent,
+    FieldContactsComponent],
   imports: [IonicModule,
             IonicImageLoader],
   exports: [CameraImageComponent,
@@ -34,7 +40,10 @@ import { FieldTransmissionComponent } from './item-form/field-transmission/field
     FieldCategoryComponent,
     FieldConditionComponent,
     FieldFuelComponent,
-    FieldTransmissionComponent]
+    FieldTransmissionComponent,
+    ItemAddImagesComponent,
+    ItemUpdateDeleteImagesComponent,
+    FieldContactsComponent]
 })
 export class ComponentsModule {
 }

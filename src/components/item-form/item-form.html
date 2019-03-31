@@ -45,32 +45,41 @@
           </ion-item>
 
           <field-transmission *ngIf="getDisplayOption(formFields.Transmission)"
+                              class="custom-component"
                               [defaultTransmission]="getDisplayValue(formFields.Transmission)">
           </field-transmission>
 
           <field-fuel *ngIf="getDisplayOption(formFields.Fuel)"
+                      class="custom-component"
                       [defaultFuelType]="getDisplayValue(formFields.Fuel)">
           </field-fuel>
 
           <field-condition *ngIf="getDisplayOption(formFields.Condition)"
-                           [itemType]="itemType"
+                           [itemType]="itemType" class="custom-component"
                            [defaultCondition]="getDisplayValue(formFields.Condition)">
           </field-condition>
 
           <field-category *ngIf="getDisplayOption(formFields.ItemCategory)"
-                          [itemType]="itemType"
+                          [itemType]="itemType" class="custom-component"
                           [defaultCategory]="getDisplayValue(formFields.ItemCategory)">
           </field-category>
 
           <field-district-city *ngIf="getDisplayOption(formFields.City)"
+                               class="custom-component"
                                [defaultCity]="getDisplayValue(formFields.City)"
                                [defaultDistrict]="getDisplayValue(formFields.District)">
           </field-district-city>
 
           <field-brand-model *ngIf="getDisplayOption(formFields.Model)"
+                             class="custom-component"
                              [defaultBrand]="getDisplayValue(formFields.Brand)"
                              [defaultModel]="getDisplayValue(formFields.Model)">
           </field-brand-model>
+
+          <field-contacts *ngIf="getDisplayOption(formFields.Contacts)"
+                          [defaultContacts]="getDisplayValue(formFields.Contacts)"
+                          [contactCount]="2">
+          </field-contacts>
 
           <ion-item no-padding col-12
                     *ngIf="getDisplayOption(formFields.Description)">
