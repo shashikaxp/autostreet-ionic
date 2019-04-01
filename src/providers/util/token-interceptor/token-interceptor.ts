@@ -7,7 +7,7 @@ import { switchMap } from "rxjs/operators";
 import { fromPromise } from "rxjs/observable/fromPromise";
 import { Storage } from "@ionic/storage";
 import 'rxjs/add/operator/do';
-import { STORAGE } from "../../../config";
+import { API_VERSION, STORAGE } from "../../../config";
 
 @Injectable()
 export class TokenInterceptorProvider {
@@ -23,10 +23,14 @@ export class TokenInterceptorProvider {
   intercept(request: HttpRequest<any>,
             next: HttpHandler): Observable<HttpEvent<any>> {
 
+    request = request.clone({
+      headers: request.headers.set('X-Api-Version', API_VERSION)
+    });
+
     if (!request.headers.has(this.InterceptorSkipHeader)) {
       return fromPromise(this.storage.get(STORAGE.TOKEN))
         .pipe(switchMap(token => {
-          const headers = request.headers.set('Authorization', 'Bearer ' + token);
+          let headers = request.headers.set('Authorization', 'Bearer ' + token);
           const reqClone = request.clone({headers});
           return this.handleRequest(next, reqClone);
         }));
