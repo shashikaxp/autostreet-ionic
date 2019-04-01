@@ -22,10 +22,7 @@ export class CameraImageComponent {
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      correctOrientation: true,
-      targetWidth: 600,
-      targetHeight: 600,
-      allowEdit: true
+      correctOrientation: true
     };
   }
 
