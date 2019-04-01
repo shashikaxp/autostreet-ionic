@@ -19,11 +19,15 @@ export const ENDPOINTS = {
     TRANSMISSION: API_URL + 'items/transmissions'
   },
 
+  ITEM: {
+    ADD: API_URL + "sellers/{{param1}}/items",
+    ADD_IMAGES: API_URL + "items/{{param1}}/images"
+  },
 
   // company endpoints
   COMPANY: {
     REGISTER: API_URL + "companies",
-    PARTS_LIST: API_URL + "companies/{{param1}}/spare-parts?page={{param2}}&limit={{param3}}"
+    PARTS_LIST: API_URL + "companies//spare-parts?page={{param2}}&limit={{param3}}"
   },
 
   //Spare Parts

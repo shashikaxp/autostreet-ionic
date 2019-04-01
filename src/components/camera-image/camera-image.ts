@@ -9,16 +9,13 @@ import { AlertController } from "ionic-angular";
 })
 export class CameraImageComponent {
 
-  @Input() imageInputSrc: string;
-  @Input() type: string;
+  @Input() imageInput;
   @Output() changeImage = new EventEmitter<any>();
   private cameraOptions;
   public imageSrc;
 
   constructor(private camera: Camera,
               private alertCtrl: AlertController) {
-
-    this.imageSrc = this.imageInputSrc;
 
     this.cameraOptions = {
       quality: 50,
@@ -32,9 +29,13 @@ export class CameraImageComponent {
     };
   }
 
+  ngOnInit() {
+    this.imageSrc = this.imageInput;
+  }
+
   getImageSrc() {
-    if(!_.isEmpty(this.imageInputSrc)) {
-      return this.imageInputSrc;
+    if(!_.isEmpty(this.imageSrc)) {
+      return this.imageSrc;
     } else {
       return '../../../assets/imgs/default-placeholder.png';
     }
@@ -44,15 +45,24 @@ export class CameraImageComponent {
     return !_.includes(this.getImageSrc(), 'default-placeholder');
   }
 
-  takeSparePartImage() {
+  takeSparePartImage(type) {
 
+    let params;
     this.camera.getPicture(this.cameraOptions).then((imageData) => {
-      this.imageInputSrc = 'data:image/jpeg;base64,' + imageData;
+      this.imageSrc = 'data:image/jpeg;base64,' + imageData;
 
-      let params = {
-        type: "updateOrAdd",
-        url: this.imageInputSrc
-      };
+      if (type == 'add') {
+        params = {
+          type: "add",
+          src: this.imageSrc,
+        };
+      } else if (type == 'edit') {
+        params = {
+          type: "edit",
+          src: this.imageSrc,
+          id: this.imageInput['id']
+        };
+      }
 
       this.changeImage.emit(params);
     }, (err) => {
@@ -63,7 +73,8 @@ export class CameraImageComponent {
   deleteImage() {
     let params = {
       type: "delete",
-      url: this.imageInputSrc
+      src: this.imageSrc,
+      id: this.imageInput['id']
     };
     this.changeImage.emit(params);
   }

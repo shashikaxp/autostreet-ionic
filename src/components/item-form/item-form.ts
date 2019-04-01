@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { formFields } from "./item-form.config";
 import { ItemFormService } from "./item-form.svc";
 import _ from 'lodash';
+import { vehicleTransformer } from "../../transformers/vehicle";
 
 @Component({
   selector: 'new-item-form',
@@ -14,6 +15,8 @@ export class ItemFormComponent {
   @Input() itemType;
   @Input() formType;
   @Input() formData;
+
+  @Output() formSubmitted = new EventEmitter();
 
   public itemFormSvc;
 
@@ -28,7 +31,8 @@ export class ItemFormComponent {
   }
 
   setData(formData) {
-    console.log('formData', formData);
+    formData.item_type = this.itemType;
+    this.formSubmitted.emit(vehicleTransformer(formData));
   }
 
   getDisplayOption(fieldName) {

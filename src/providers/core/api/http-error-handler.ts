@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from "@angular/common/http";
 import {
-  App, NavController, ToastController
+  App, NavController
 } from 'ionic-angular';
 import _ from "lodash";
+import { ErrorToastProvider } from "../../error-toast/error-toast";
 
 @Injectable()
 export class HttpErrorHandlerProvider {
 
   private navCtrl: NavController;
 
-  constructor(private toastCtrl: ToastController,
+  constructor(private errorToast: ErrorToastProvider,
               private app: App,) {
     this.navCtrl = app.getActiveNav();
   }
@@ -31,20 +32,8 @@ export class HttpErrorHandlerProvider {
   }
 
   createErrorToast(message) {
-
-    let options = {
-      message: message,
-      cssClass: "httpErrorToast",
-      position: 'top',
-      showCloseButton: true,
-      dismissOnPageChange: true,
-      closeButtonText: "X"
-    };
-
-    let toast = this.toastCtrl.create(options);
-
+    let toast = this.errorToast.create(message);
     toast.present();
-
   }
 
 }

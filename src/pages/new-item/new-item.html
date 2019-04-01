@@ -9,6 +9,10 @@
 
 <ion-content padding>
   <category-selector (itemChanged)="onItemChanged($event)"></category-selector>
+  <item-add-images [imageCount]="imageCount"
+                   (selectedImages)="setImages($event)"></item-add-images>
   <new-item-form [itemType]="selectedItemType"
-                 [formType]="formType"></new-item-form>
+                 [formType]="formType"
+                 (formSubmitted)="newItem($event)"
+  ></new-item-form>
 </ion-content>

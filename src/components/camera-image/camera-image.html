@@ -6,9 +6,9 @@
             class="delete-button"
             (click)="presentConfirm()">X</button>
   </img-loader>
-  <button *ngIf="!isValidUrl()" (click)="takeSparePartImage()" small
+  <button *ngIf="!isValidUrl()" (click)="takeSparePartImage('add')" small
           class="edit-button">Add</button>
-  <button *ngIf="isValidUrl()" (click)="takeSparePartImage()" small
+  <button *ngIf="isValidUrl()" (click)="takeSparePartImage('edit')" small
           class="edit-button">Change</button>
 </ion-col>
 

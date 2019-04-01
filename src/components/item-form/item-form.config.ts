@@ -15,17 +15,21 @@ export const formFields = {
   EngineCapacity: "engine_capacity",
   Transmission: "transmission",
   Condition: "condition",
-  Mileage: "mileage",
+  Mileage: "millage", //TODO change to mileage
   Contacts: "contacts",
   Description: "description"
 };
 
-
 export let formConfig = {};
 
 formConfig[ITEM_TYPES.VEHICLE] =
-  [formFields.Title, formFields.Price, formFields.Model, formFields.Year, formFields.ItemCategory];
+  [formFields.Title, formFields.Description, formFields.Price, formFields.City,
+    formFields.Model, formFields.Year,
+    formFields.ItemCategory, formFields.Fuel, formFields.EngineCapacity,
+    formFields.Transmission, formFields.Condition,
+    formFields.Mileage, formFields.Contacts];
 
 formConfig[ITEM_TYPES.SPARE_PART] =
-  [formFields.Price, formFields.City, formFields.Model, formFields.Fuel, formFields.Transmission, formFields.Description,
-    formFields.Description, formFields.ItemCategory, formFields.Condition, formFields.Mileage, formFields.EngineCapacity];
+  [formFields.Title, formFields.Description, formFields.Price, formFields.City,
+    formFields.Model, formFields.Condition, formFields.Contacts,
+    formFields.ItemCategory];
