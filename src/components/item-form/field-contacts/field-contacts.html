@@ -1,4 +1,4 @@
-<fieldset [ngModelGroup]="formFields.Contacts">
+<fieldset class="custom-fieldset" [ngModelGroup]="formFields.Contacts">
   <ion-item no-padding col-12 *ngFor="let c of contacts; let i = index">
     <ion-input [ngModel]="c"
                type="number" [name]="'contact_'+ i"
