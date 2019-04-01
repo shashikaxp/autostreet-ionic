@@ -4,7 +4,7 @@ import {
   App, NavController
 } from 'ionic-angular';
 import _ from "lodash";
-import { ErrorToastProvider } from "../../error-toast/error-toast";
+import { ErrorToastProvider } from "../../util/error-toast/error-toast";
 
 @Injectable()
 export class HttpErrorHandlerProvider {

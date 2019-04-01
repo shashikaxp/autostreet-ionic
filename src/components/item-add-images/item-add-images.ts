@@ -21,7 +21,7 @@ export class ItemAddImagesComponent {
 
   getImagesArray(imageCount) {
     let tempArray = [];
-    for (let i = 0; i < imageCount; i++ ) {
+    for (let i = 0; i < imageCount; i++) {
       tempArray.push({
         id: i,
         src: null

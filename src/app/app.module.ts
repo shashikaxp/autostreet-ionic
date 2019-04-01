@@ -30,9 +30,9 @@ import { ConditionProvider } from '../providers/core/form-fields/condition/condi
 import { FuelProvider } from '../providers/core/form-fields/fuel/fuel';
 import { TransmissionProvider } from '../providers/core/form-fields/transmission/transmission';
 import { SellerProvider } from '../providers/core/seller/seller';
-import { StorageProvider } from '../providers/storage/storage';
-import { ItemProvider } from '../providers/item/item';
-import { ErrorToastProvider } from '../providers/error-toast/error-toast';
+import { StorageProvider } from '../providers/core/storage/storage';
+import { ItemProvider } from '../providers/core/item/item';
+import { ErrorToastProvider } from '../providers/util/error-toast/error-toast';
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

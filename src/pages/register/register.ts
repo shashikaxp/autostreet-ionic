@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { SellerProvider } from "../../providers/core/seller/seller";
-import { StorageProvider } from "../../providers/storage/storage";
+import { StorageProvider } from "../../providers/core/storage/storage";
 import { STORAGE } from "../../config";
 import { ErrorLogger } from "../../modules/ErrorLogger";
 

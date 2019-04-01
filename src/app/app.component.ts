@@ -7,7 +7,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { Spinkit } from "ng-http-loader/spinkits";
 import { STORAGE } from "../config";
 import _ from "lodash";
-import { StorageProvider } from "../providers/storage/storage";
+import { StorageProvider } from "../providers/core/storage/storage";
 
 @Component({
   templateUrl: 'app.html'

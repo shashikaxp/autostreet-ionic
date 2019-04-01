@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { StorageProvider } from "../../providers/storage/storage";
+import { StorageProvider } from "../../providers/core/storage/storage";
 import { STORAGE } from "../../config";
-import { ItemProvider } from "../../providers/item/item";
+import { ItemProvider } from "../../providers/core/item/item";
 import { dataURItoBlob } from "../../providers/util/blob-convertor/blob-convertor";
 import _ from "lodash";
-import { ErrorToastProvider } from "../../providers/error-toast/error-toast";
+import { ErrorToastProvider } from "../../providers/util/error-toast/error-toast";
 
 @IonicPage()
 @Component({

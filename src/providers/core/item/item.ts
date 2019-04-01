@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ApiProvider } from "../core/api/api";
-import { ENDPOINTS } from "../core/api/endpoints";
+import { ApiProvider } from "../api/api";
+import { ENDPOINTS } from "../api/endpoints";
 
 @Injectable()
 export class ItemProvider {

@@ -1,101 +1,99 @@
-<ion-content no-padding>
-  <ion-grid no-padding>
-    <form no-padding #metaDataForm="ngForm"
-          (submit)="setData(metaDataForm.value)">
-      <ion-row>
+<ion-grid no-padding>
+  <form no-padding #metaDataForm="ngForm"
+        (submit)="setData(metaDataForm.value)">
+    <ion-row>
 
-        <ion-list col-12>
+      <ion-list col-12>
 
-          <ion-item no-padding col-12
-                    *ngIf="getDisplayOption(formFields.Title)">
-            <ion-input [ngModel]="getDisplayValue(formFields.Title)"
-                       placeholder="Title"
-                       [name]="formFields.Title"
-                       type="text"></ion-input>
-          </ion-item>
+        <ion-item no-padding col-12
+                  *ngIf="getDisplayOption(formFields.Title)">
+          <ion-input [ngModel]="getDisplayValue(formFields.Title)"
+                     placeholder="Title"
+                     [name]="formFields.Title"
+                     type="text"></ion-input>
+        </ion-item>
 
-          <ion-item no-padding col-12
-                    *ngIf="getDisplayOption(formFields.Price)">
-            <ion-input [ngModel]="getDisplayValue(formFields.Price)"
-                       type="text" [name]="formFields.Price"
-                       placeholder="Price"></ion-input>
-          </ion-item>
+        <ion-item no-padding col-12
+                  *ngIf="getDisplayOption(formFields.Price)">
+          <ion-input [ngModel]="getDisplayValue(formFields.Price)"
+                     type="text" [name]="formFields.Price"
+                     placeholder="Price"></ion-input>
+        </ion-item>
 
 
-          <ion-item no-padding col-12
-                    *ngIf="getDisplayOption(formFields.EngineCapacity)">
-            <ion-input [ngModel]="getDisplayValue(formFields.EngineCapacity)"
-                       type="number" [name]="formFields.EngineCapacity"
-                       placeholder="Engine Capacity"></ion-input>
-          </ion-item>
+        <ion-item no-padding col-12
+                  *ngIf="getDisplayOption(formFields.EngineCapacity)">
+          <ion-input [ngModel]="getDisplayValue(formFields.EngineCapacity)"
+                     type="number" [name]="formFields.EngineCapacity"
+                     placeholder="Engine Capacity"></ion-input>
+        </ion-item>
 
-          <ion-item no-padding col-12
-                    *ngIf="getDisplayOption(formFields.Mileage)">
-            <ion-input [ngModel]="getDisplayValue(formFields.Mileage)"
-                       type="number" [name]="formFields.Mileage"
-                       placeholder="Mileage"></ion-input>
-          </ion-item>
+        <ion-item no-padding col-12
+                  *ngIf="getDisplayOption(formFields.Mileage)">
+          <ion-input [ngModel]="getDisplayValue(formFields.Mileage)"
+                     type="number" [name]="formFields.Mileage"
+                     placeholder="Mileage"></ion-input>
+        </ion-item>
 
-          <ion-item>
-            <ion-label>Year</ion-label>
-            <ion-datetime displayFormat="YYYY" pickerFormat="YYYY"
-                          [name]="formFields.Year"
-                          [ngModel]="getDisplayValue(formFields.Year)">
-            </ion-datetime>
-          </ion-item>
+        <ion-item>
+          <ion-label>Year</ion-label>
+          <ion-datetime displayFormat="YYYY" pickerFormat="YYYY"
+                        [name]="formFields.Year"
+                        [ngModel]="getDisplayValue(formFields.Year)">
+          </ion-datetime>
+        </ion-item>
 
-          <field-transmission *ngIf="getDisplayOption(formFields.Transmission)"
-                              class="custom-component"
-                              [defaultTransmission]="getDisplayValue(formFields.Transmission)">
-          </field-transmission>
+        <field-transmission *ngIf="getDisplayOption(formFields.Transmission)"
+                            class="custom-component"
+                            [defaultTransmission]="getDisplayValue(formFields.Transmission)">
+        </field-transmission>
 
-          <field-fuel *ngIf="getDisplayOption(formFields.Fuel)"
-                      class="custom-component"
-                      [defaultFuelType]="getDisplayValue(formFields.Fuel)">
-          </field-fuel>
+        <field-fuel *ngIf="getDisplayOption(formFields.Fuel)"
+                    class="custom-component"
+                    [defaultFuelType]="getDisplayValue(formFields.Fuel)">
+        </field-fuel>
 
-          <field-condition *ngIf="getDisplayOption(formFields.Condition)"
-                           [itemType]="itemType" class="custom-component"
-                           [defaultCondition]="getDisplayValue(formFields.Condition)">
-          </field-condition>
+        <field-condition *ngIf="getDisplayOption(formFields.Condition)"
+                         [itemType]="itemType" class="custom-component"
+                         [defaultCondition]="getDisplayValue(formFields.Condition)">
+        </field-condition>
 
-          <field-category *ngIf="getDisplayOption(formFields.ItemCategory)"
-                          [itemType]="itemType" class="custom-component"
-                          [defaultCategory]="getDisplayValue(formFields.ItemCategory)">
-          </field-category>
+        <field-category *ngIf="getDisplayOption(formFields.ItemCategory)"
+                        [itemType]="itemType" class="custom-component"
+                        [defaultCategory]="getDisplayValue(formFields.ItemCategory)">
+        </field-category>
 
-          <field-district-city *ngIf="getDisplayOption(formFields.City)"
-                               class="custom-component"
-                               [defaultCity]="getDisplayValue(formFields.City)"
-                               [defaultDistrict]="getDisplayValue(formFields.District)">
-          </field-district-city>
-
-          <field-brand-model *ngIf="getDisplayOption(formFields.Model)"
+        <field-district-city *ngIf="getDisplayOption(formFields.City)"
                              class="custom-component"
-                             [defaultBrand]="getDisplayValue(formFields.Brand)"
-                             [defaultModel]="getDisplayValue(formFields.Model)">
-          </field-brand-model>
+                             [defaultCity]="getDisplayValue(formFields.City)"
+                             [defaultDistrict]="getDisplayValue(formFields.District)">
+        </field-district-city>
 
-          <field-contacts *ngIf="getDisplayOption(formFields.Contacts)"
-                          [defaultContacts]="getDisplayValue(formFields.Contacts)"
-                          [contactCount]="2">
-          </field-contacts>
+        <field-brand-model *ngIf="getDisplayOption(formFields.Model)"
+                           class="custom-component"
+                           [defaultBrand]="getDisplayValue(formFields.Brand)"
+                           [defaultModel]="getDisplayValue(formFields.Model)">
+        </field-brand-model>
 
-          <ion-item no-padding col-12
-                    *ngIf="getDisplayOption(formFields.Description)">
-            <ion-textarea [ngModel]="getDisplayValue(formFields.Description)"
-                          type="text"
-                          [name]="formFields.Description"
-                          col-12 rows="4"
-                          placeholder="Enter more information here..."></ion-textarea>
-          </ion-item>
+        <field-contacts *ngIf="getDisplayOption(formFields.Contacts)"
+                        [defaultContacts]="getDisplayValue(formFields.Contacts)"
+                        [contactCount]="2">
+        </field-contacts>
 
-          <button ion-button full type="submit">Submit</button>
+        <ion-item no-padding col-12
+                  *ngIf="getDisplayOption(formFields.Description)">
+          <ion-textarea [ngModel]="getDisplayValue(formFields.Description)"
+                        type="text"
+                        [name]="formFields.Description"
+                        col-12 rows="4"
+                        placeholder="Enter more information here..."></ion-textarea>
+        </ion-item>
 
-        </ion-list>
-      </ion-row>
+        <button ion-button full type="submit">Submit</button>
 
-    </form>
-  </ion-grid>
-</ion-content>
+      </ion-list>
+    </ion-row>
+
+  </form>
+</ion-grid>
 
