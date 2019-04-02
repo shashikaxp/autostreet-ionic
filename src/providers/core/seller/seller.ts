@@ -14,4 +14,9 @@ export class SellerProvider {
     return this.apoProvider.httpPostCall(url, params, HEADER_SKIP_INTERCEPTOR);
   }
 
+  sellerItems(sellerId, searchParams) {
+    let url = this.apoProvider.getHttpUrl(ENDPOINTS.SELLERS.ITEMS, sellerId, searchParams);
+    return this.apoProvider.httpGetCall(url);
+  }
+
 }

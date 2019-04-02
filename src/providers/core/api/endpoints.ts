@@ -1,4 +1,4 @@
-import { API_URL } from "../../../config";
+import { API_URL, SEARCH_API_URL } from "../../../config";
 
 export const ENDPOINTS = {
 
@@ -45,7 +45,8 @@ export const ENDPOINTS = {
   },
 
   SELLERS: {
-    REGISTER: API_URL + "sellers"
+    REGISTER: API_URL + "sellers",
+    ITEMS: API_URL + "sellers/{{param1}}/items?{{param2}}"
   }
 
 };

@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SellerProvider } from "../../../providers/core/seller/seller";
+import { StorageProvider } from "../../../providers/core/storage/storage";
+import { STORAGE } from "../../../config";
+import _ from "lodash";
 
 @IonicPage()
 @Component({
@@ -9,16 +13,44 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class InventoryPage {
 
   public selectedItemType;
+  public items = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public storage: StorageProvider,
+              public seller: SellerProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad InventoryPage');
-  }
 
   onItemChanged(item) {
     this.selectedItemType = item;
+    this.getItems();
+  }
+
+  async getItems() {
+    let sellerId = await this.storage.get(STORAGE.COMPANY_ID);
+    let searchParams = `itemType=${this.selectedItemType}`;
+    this.seller.sellerItems(sellerId, searchParams).subscribe(data => {
+      this.items = data.items;
+    });
+  }
+
+  getImageSrc(src) {
+    if(!_.isEmpty(src)) {
+      return src;
+    } else {
+      return '../../../assets/imgs/default-placeholder.png';
+    }
+  }
+
+  delete() {
+    console.log('delete');
+  }
+
+  edit() {
+    console.log('edit');
   }
 
 }
+
+

@@ -11,38 +11,24 @@
   <category-selector (itemChanged)="onItemChanged($event)"></category-selector>
   <filters ion-fixed [itemType]="selectedItemType"></filters>
 
+  <P *ngIf="items.length < 1">No items found</P>
+
   <ion-list>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="../../assets/imgs/pages/home/car.jpeg">
-      </ion-thumbnail>
-      <h2>My Neighbor Totoro</h2>
-      <p>Hayao Miyazaki • 1988</p>
-      <button ion-button clear item-end>View</button>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="../../assets/imgs/pages/home/car.jpeg">
-      </ion-thumbnail>
-      <h2>My Neighbor Totoro</h2>
-      <p>Hayao Miyazaki • 1988</p>
-      <button ion-button clear item-end>View</button>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="../../assets/imgs/pages/home/car.jpeg">
-      </ion-thumbnail>
-      <h2>My Neighbor Totoro</h2>
-      <p>Hayao Miyazaki • 1988</p>
-      <button ion-button clear item-end>View</button>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="../../assets/imgs/pages/home/car.jpeg">
-      </ion-thumbnail>
-      <h2>My Neighbor Totoro</h2>
-      <p>Hayao Miyazaki • 1988</p>
-      <button ion-button clear item-end>View</button>
-    </ion-item>
+
+    <ion-item-sliding *ngFor="let item of items">
+      <ion-item (click)="edit()">
+        <ion-thumbnail item-start>
+          <img [src]="getImageSrc(item.images[0])">
+        </ion-thumbnail>
+        <h2>{{item.title}}</h2>
+        <p>{{item.modelName}} {{item.year}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button class="delete-button" (click)="delete()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
   </ion-list>
 </ion-content>
