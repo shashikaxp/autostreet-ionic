@@ -16,9 +16,9 @@
 // automatically applied to the <body> element in the app.
 
 .httpErrorToast .toast-wrapper {
-  background-color: #d46060;
+  background-color: color($colors, danger);
   color: #fff;
-  border-radius: 5px !important;
+  //border-radius: 5px !important;
 }
 
 .center {
