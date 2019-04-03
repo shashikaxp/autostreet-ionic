@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { formConfig, formFields } from "./item-form.config";
+import { FORM_TYPES, formConfig, formFields } from "./item-form.config";
 
 export class ItemFormService {
 
@@ -14,7 +14,7 @@ export class ItemFormService {
   }
 
   getDisplayValue(filedType) {
-    if (this.formType === 'update') {
+    if (this.formType === FORM_TYPES.UPDATE) {
       return  _.get(this.formData, filedType, '');
     } else if (filedType === formFields.Year) {
       return new Date().getFullYear().toString()

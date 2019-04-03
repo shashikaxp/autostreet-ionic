@@ -1,5 +1,10 @@
 import { ITEM_TYPES } from "../../config";
 
+export const FORM_TYPES = {
+  "NEW": 'new',
+  "UPDATE": 'update'
+};
+
 export const formFields = {
   Title: 'title',
   Price: "price",
