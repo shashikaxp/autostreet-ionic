@@ -30,7 +30,7 @@ export class InventoryPage {
   async getItems() {
     let sellerId = await this.storage.get(STORAGE.COMPANY_ID);
     let searchParams = `itemType=${this.selectedItemType}`;
-    this.seller.sellerItems(sellerId, searchParams).subscribe(data => {
+    this.seller.items(sellerId, searchParams).subscribe(data => {
       this.items = data.items;
     });
   }
@@ -47,8 +47,10 @@ export class InventoryPage {
     console.log('delete');
   }
 
-  edit() {
-    console.log('edit');
+  edit(itemId) {
+    this.navCtrl.push("EditItemPage", {
+      itemId: itemId
+    })
   }
 
 }
