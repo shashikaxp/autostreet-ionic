@@ -9,10 +9,9 @@ import { AlertController } from "ionic-angular";
 })
 export class CameraImageComponent {
 
-  @Input() imageInput;
+  @Input() imageSrc;
   @Output() changeImage = new EventEmitter<any>();
   private cameraOptions;
-  public imageSrc;
 
   constructor(private camera: Camera,
               private alertCtrl: AlertController) {
@@ -29,10 +28,6 @@ export class CameraImageComponent {
     };
   }
 
-  ngOnInit() {
-    this.imageSrc = this.imageInput;
-  }
-
   getImageSrc() {
     if(!_.isEmpty(this.imageSrc)) {
       return this.imageSrc;
@@ -45,26 +40,11 @@ export class CameraImageComponent {
     return !_.includes(this.getImageSrc(), 'default-placeholder');
   }
 
-  takeSparePartImage(type) {
+  takeImage() {
 
-    let params;
     this.camera.getPicture(this.cameraOptions).then((imageData) => {
       this.imageSrc = 'data:image/jpeg;base64,' + imageData;
-
-      if (type == 'add') {
-        params = {
-          type: "add",
-          src: this.imageSrc,
-        };
-      } else if (type == 'edit') {
-        params = {
-          type: "edit",
-          src: this.imageSrc,
-          id: this.imageInput['id']
-        };
-      }
-
-      this.changeImage.emit(params);
+      this.changeImage.emit(this.imageSrc);
     }, (err) => {
       // Handle error
     });
@@ -74,7 +54,6 @@ export class CameraImageComponent {
     let params = {
       type: "delete",
       src: this.imageSrc,
-      id: this.imageInput['id']
     };
     this.changeImage.emit(params);
   }
