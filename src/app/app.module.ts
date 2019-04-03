@@ -33,6 +33,7 @@ import { SellerProvider } from '../providers/core/seller/seller';
 import { StorageProvider } from '../providers/core/storage/storage';
 import { ItemProvider } from '../providers/core/item/item';
 import { ErrorToastProvider } from '../providers/util/error-toast/error-toast';
+import { ItemImageProvider } from '../providers/core/item/item-image/item-image';
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -86,7 +87,8 @@ export function setTranslateLoader(http: HttpClient) {
     SellerProvider,
     StorageProvider,
     ItemProvider,
-    ErrorToastProvider
+    ErrorToastProvider,
+    ItemImageProvider
   ]
 })
 export class AppModule {}

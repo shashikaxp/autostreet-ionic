@@ -8,11 +8,23 @@
 
 
 <ion-content padding>
+
   <category-selector (itemChanged)="onItemChanged($event)"></category-selector>
-  <item-add-images [imageCount]="imageCount"
-                   (selectedImages)="setImages($event)"></item-add-images>
+
+  <section>
+    <ion-row>
+      <ion-col col-4 *ngFor="let image of images">
+        <camera-image
+          (changeImage)="newImage($event, image.id)"
+          [imageSrc]="image.src">
+        </camera-image>
+      </ion-col>
+    </ion-row>
+  </section>
+
   <new-item-form [itemType]="selectedItemType"
                  [formType]="formType"
                  (formSubmitted)="newItem($event)"
   ></new-item-form>
+
 </ion-content>

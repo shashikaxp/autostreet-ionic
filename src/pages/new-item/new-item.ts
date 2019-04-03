@@ -3,9 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageProvider } from "../../providers/core/storage/storage";
 import { STORAGE } from "../../config";
 import { ItemProvider } from "../../providers/core/item/item";
-import { dataURItoBlob } from "../../providers/util/blob-convertor/blob-convertor";
 import _ from "lodash";
-import { ErrorToastProvider } from "../../providers/util/error-toast/error-toast";
+import { FORM_TYPES } from "../../components/item-form/item-form.config";
+import { ItemImageProvider } from "../../providers/core/item/item-image/item-image";
 
 @IonicPage()
 @Component({
@@ -15,52 +15,42 @@ import { ErrorToastProvider } from "../../providers/util/error-toast/error-toast
 export class NewItemPage {
 
   public selectedItemType;
-  public formType = 'Add';
+  public formType = FORM_TYPES.NEW;
 
   public images;
-  public imageCount = 2;
+  public imageCount = 6;
 
   constructor(public navCtrl: NavController,
               public storage: StorageProvider,
               public itemProvider: ItemProvider,
-              public errorToast: ErrorToastProvider,
+              public itemImageProvider: ItemImageProvider,
               public navParams: NavParams) {
   }
 
   onItemChanged(item) {
     this.selectedItemType = item;
-    this.formType = 'Add';
+    this.formType = FORM_TYPES.NEW;
+    this.images = this.itemImageProvider.generateFormattedImagesArray([]);
   }
 
   async newItem(formData) {
-    if (_.size(this.images) < 1) {
-      this.errorToast.create("Please add at least one image").present();
-    } else {
       let sellerId = await this.storage.get(STORAGE.COMPANY_ID);
       this.itemProvider.newItem(sellerId, formData).subscribe(data => {
         this.addImages(data.id);
       });
-    }
-  }
-
-  setImages(images) {
-    this.images = images.data;
   }
 
   addImages(itemId) {
-    let formData = this.getImageFormData();
-    this.itemProvider.addImages(itemId, formData).subscribe(data => {
-    });
+    this.itemImageProvider.handleImages(itemId, this.images).subscribe();
   }
 
-  getImageFormData() {
-    let formData = new FormData();
-    _.forEach(this.images, (src, i) => {
-      if (!_.isEmpty(src)) {
-        formData.append('images', dataURItoBlob(src), i + '.jpeg');
-      }
-    });
-    return formData;
+  newImage(src, id) {
+    let imageObject = _.find(this.images, {'id': id});
+    if (typeof imageObject !== 'undefined') {
+      imageObject.src = src;
+      imageObject.isChanged = true;
+    }
+    console.log("####", this.images);
   }
 
 }
