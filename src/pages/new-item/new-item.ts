@@ -6,6 +6,7 @@ import { ItemProvider } from "../../providers/core/item/item";
 import _ from "lodash";
 import { FORM_TYPES } from "../../components/item-form/item-form.config";
 import { ItemImageProvider } from "../../providers/core/item/item-image/item-image";
+import { ErrorLogger } from "../../modules/ErrorLogger";
 
 @IonicPage()
 @Component({
@@ -18,7 +19,7 @@ export class NewItemPage {
   public formType = FORM_TYPES.NEW;
 
   public images;
-  public imageCount = 6;
+  public log = new ErrorLogger();
 
   constructor(public navCtrl: NavController,
               public storage: StorageProvider,
@@ -37,11 +38,12 @@ export class NewItemPage {
       let sellerId = await this.storage.get(STORAGE.COMPANY_ID);
       this.itemProvider.newItem(sellerId, formData).subscribe(data => {
         this.addImages(data.id);
-      });
+      }, error => this.log.error("add new item", error));
   }
 
   addImages(itemId) {
-    this.itemImageProvider.handleImages(itemId, this.images).subscribe();
+    this.itemImageProvider.handleImages(itemId, this.images).subscribe(() => {
+    }, error => this.log.error("add new images", error));
   }
 
   newImage(src, id) {
