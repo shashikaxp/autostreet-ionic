@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit Item</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <section>
+    <ion-row>
+      <ion-col col-4 *ngFor="let image of images">
+        <camera-image
+          (deleteImage)="deleteImage($event, image.id)"
+          (changeImage)="newImage($event, image.id)"
+          [imageSrc]="image.src">
+        </camera-image>
+      </ion-col>
+    </ion-row>
+  </section>
+
+  <new-item-form [itemType]="item?.item_type"
+                 [formType]="formType"
+                 [formData]="item"
+                 (formSubmitted)="editItem($event)"
+  ></new-item-form>
+
+</ion-content>

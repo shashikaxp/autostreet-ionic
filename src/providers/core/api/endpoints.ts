@@ -21,7 +21,9 @@ export const ENDPOINTS = {
 
   ITEM: {
     ADD: API_URL + "sellers/{{param1}}/items",
-    ADD_IMAGES: API_URL + "items/{{param1}}/images"
+    ADD_IMAGES: API_URL + "items/{{param1}}/images",
+    UPDATE_IMAGE: API_URL + "items/{{param1}}/images/{{param2}}",
+    DELETE_IMAGE: API_URL + "items/{{param1}}/images/{{param2}}"
   },
 
   // company endpoints
@@ -46,7 +48,8 @@ export const ENDPOINTS = {
 
   SELLERS: {
     REGISTER: API_URL + "sellers",
-    ITEMS: API_URL + "sellers/{{param1}}/items?{{param2}}"
+    ITEMS: API_URL + "sellers/{{param1}}/items?{{param2}}",
+    ITEM: API_URL + "items/{{param1}}",
   }
 
 };

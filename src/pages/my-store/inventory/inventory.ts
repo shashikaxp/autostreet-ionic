@@ -29,7 +29,7 @@ export class InventoryPage {
 
   async getItems() {
     let sellerId = await this.storage.get(STORAGE.COMPANY_ID);
-    let searchParams = `itemType=${this.selectedItemType}`;
+    let searchParams = `type=${this.selectedItemType}&page=0&size=100`;
     this.seller.items(sellerId, searchParams).subscribe(data => {
       this.items = data.items;
     });

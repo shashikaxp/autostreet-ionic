@@ -50,7 +50,6 @@ export class NewItemPage {
       imageObject.src = src;
       imageObject.isChanged = true;
     }
-    console.log("####", this.images);
   }
 
 }

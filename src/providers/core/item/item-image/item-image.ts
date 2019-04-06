@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { dataURItoBlob } from "../../../util/blob-convertor/blob-convertor";
 import _ from "lodash";
 import { ItemProvider } from "../item";
+import { forkJoin } from "rxjs/observable/forkJoin";
 
 @Injectable()
 export class ItemImageProvider {
@@ -12,10 +13,25 @@ export class ItemImageProvider {
   }
 
   handleImages(itemId, images) {
+    let addImages = this.addImages(itemId, images);
+    let updateImages = this.updateImages(itemId, images);
+    return forkJoin([addImages, updateImages]);
+  }
+
+  addImages(itemId, images) {
     let imagesToAdd = _.filter(images, {'type': 'add', "isChanged": true});
     console.log('imagesToAdd', imagesToAdd);
     let formData = this.newImagesFormData(imagesToAdd);
     return this.itemProvider.addImages(itemId, formData);
+  }
+
+  updateImages(itemId, images) {
+    let imagesToAdd = _.filter(images, {'type': 'update', "isChanged": true});
+    let forkArray = _.map(imagesToAdd, (image) => {
+      let params = this.updateImageFormData(image);
+      return this.itemProvider.updateItem(itemId, image.id, params)
+    });
+    return forkJoin(forkArray);
   }
 
   updateImageFormData(image) {
@@ -57,19 +73,28 @@ export class ItemImageProvider {
 
   generateUpdateImagesArray(images) {
 
-    let temp = { id: 1, src: null};
     let arraySize = _.size(images);
 
-    let filledArray = _.fill(images, temp, arraySize);
-    return _.map(filledArray, (image) => {
+    images = _.map(images, (image) => {
       return {
-        ...image,
+        id: image.id,
+        src: image.url,
         isChanged: false,
         type: 'update'
       }
-
-    })
-
+    });
+    console.log("images",images);
+    let formattedArray = images;
+    for (let i = arraySize; i < this.imageCount; i++) {
+      formattedArray.push({
+        id: i,
+        src: null,
+        isChanged: false,
+        type: 'update'
+      });
+    }
+    console.log("formattedArray",formattedArray);
+    return formattedArray;
   }
 
 }

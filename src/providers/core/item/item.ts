@@ -18,4 +18,14 @@ export class ItemProvider {
     return this.api.httpPostCall(url, params);
   }
 
+  deleteImage(itemId, imageId) {
+    let url = this.api.getHttpUrl(ENDPOINTS.ITEM.DELETE_IMAGE, itemId, imageId);
+    return this.api.httpDeleteCall(url);
+  }
+
+  updateItem(itemId, imageID, params) {
+    let url = this.api.getHttpUrl(ENDPOINTS.ITEM.UPDATE_IMAGE, itemId, imageID);
+    return this.api.httpPostCall(url, params);
+  }
+
 }
