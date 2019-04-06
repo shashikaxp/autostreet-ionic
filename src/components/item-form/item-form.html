@@ -35,7 +35,7 @@
                      placeholder="Mileage"></ion-input>
         </ion-item>
 
-        <ion-item>
+        <ion-item  *ngIf="getDisplayOption(formFields.Year)">
           <ion-label>Year</ion-label>
           <ion-datetime displayFormat="YYYY" pickerFormat="YYYY"
                         [name]="formFields.Year"

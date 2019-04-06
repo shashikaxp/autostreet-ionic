@@ -14,10 +14,11 @@ export class ItemFormService {
   }
 
   getDisplayValue(filedType) {
+    if (filedType === formFields.Year) {
+      return this.getYearValue();
+    }
     if (this.formType === FORM_TYPES.UPDATE) {
       return  _.get(this.formData, filedType, '');
-    } else if (filedType === formFields.Year) {
-      return new Date().getFullYear().toString()
     }
     return ''
   };
@@ -25,6 +26,14 @@ export class ItemFormService {
   getDisplayOption(filedName) {
     return _.includes(formConfig[this.itemType], filedName);
   };
+
+  getYearValue() {
+    let year =  _.get(this.formData, formFields.Year, null);
+    if (_.isNull(year)) {
+      return new Date().getFullYear().toString()
+    }
+    return year.toString();
+  }
 
 
 }
