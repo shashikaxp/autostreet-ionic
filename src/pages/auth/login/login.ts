@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { AuthProvider } from "../../providers/core/auth/auth";
+import { AuthProvider } from "../../../providers/core/auth/auth";
 import { Storage } from "@ionic/storage";
-import { STORAGE } from "../../config";
-import { ErrorLogger } from "../../modules/ErrorLogger";
+import { STORAGE } from "../../../config";
+import { ErrorLogger } from "../../../modules/ErrorLogger";
 
 @IonicPage()
 @Component({
