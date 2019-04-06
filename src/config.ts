@@ -4,8 +4,8 @@ export const SEARCH_API_URL = "http://172.104.59.57:8085/";
 export const API_VERSION = 'v1';
 
 export const ITEM_TYPES = {
-  VEHICLE: 'VEHICLE',
-  SPARE_PART: 'SPARE_PART'
+  VEHICLE: 'vehicle',
+  SPARE_PART: 'spare-part'
 };
 
 export const STORAGE = {
