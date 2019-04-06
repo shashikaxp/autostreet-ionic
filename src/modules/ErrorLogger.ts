@@ -3,27 +3,15 @@ import _ from "lodash";
 export class ErrorLogger {
 
   info(message, data?) {
-    if (_.isEmpty(data)) {
-      console.info(message)
-    } else {
-      console.info(message, data)
-    }
+   this.handleConsoleMessages('info', message, data);
   }
 
   warn(message, data?) {
-    if (_.isEmpty(data)) {
-      console.warn(message)
-    } else {
-      console.warn(message, data)
-    }
+    this.handleConsoleMessages('warn', message, data);
   }
 
   error(message, data?) {
-    if (_.isEmpty(data)) {
-      console.error(message)
-    } else {
-      console.error(message, data)
-    }
+    this.handleConsoleMessages('error', message, data);
   }
 
   group(groupName?) {
@@ -37,4 +25,13 @@ export class ErrorLogger {
   groupEnd(groupName?) {
     console.groupEnd()
   }
+
+  handleConsoleMessages(type, message, data?) {
+    if (_.isEmpty(data)) {
+      console[type](message)
+    } else {
+      console[type](message, data)
+    }
+  }
+
 }
