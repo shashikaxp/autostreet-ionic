@@ -6,7 +6,7 @@ import { formFields } from "../item-form.config";
 @Component({
   selector: 'field-contacts',
   templateUrl: 'field-contacts.html',
-  viewProviders: [ { provide: ControlContainer, useExisting: NgForm } ]
+  viewProviders: [{provide: ControlContainer, useExisting: NgForm}]
 })
 export class FieldContactsComponent {
 
@@ -30,7 +30,6 @@ export class FieldContactsComponent {
   getPlaceHolder(i) {
     return "Contact " + (i + 1);
   }
-
 
 
 }
