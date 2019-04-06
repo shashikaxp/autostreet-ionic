@@ -11,6 +11,7 @@ export class CameraImageComponent {
 
   @Input() imageSrc;
   @Output() changeImage = new EventEmitter<any>();
+  @Output() deleteImage = new EventEmitter();
   private cameraOptions;
 
   constructor(private camera: Camera,
@@ -50,12 +51,8 @@ export class CameraImageComponent {
     });
   }
 
-  deleteImage() {
-    let params = {
-      type: "delete",
-      src: this.imageSrc,
-    };
-    this.changeImage.emit(params);
+  delete() {
+    this.deleteImage.emit(this.imageSrc);
   }
 
   presentConfirm() {
@@ -70,7 +67,7 @@ export class CameraImageComponent {
         {
           text: 'Delete',
           handler: () => {
-            this.deleteImage();
+            this.delete();
           }
         }
       ]

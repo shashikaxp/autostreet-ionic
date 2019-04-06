@@ -1,4 +1,7 @@
-<ion-col no-padding>
+<div no-padding class="content-wrapper">
+  <button *ngIf="isValidUrl()" class="delete-button" (click)="presentConfirm()">
+    <ion-icon name="close"></ion-icon>
+  </button>
   <img-loader [src]="getImageSrc()" [spinner]="true"
               [useImg]="true"
               class="image-container">
@@ -10,7 +13,7 @@
           class="edit-button">Add</button>
   <button *ngIf="isValidUrl()" (click)="takeImage()" small
           class="edit-button">Change</button>
-</ion-col>
+</div>
 
 
 
