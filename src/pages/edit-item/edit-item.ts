@@ -5,6 +5,7 @@ import { FORM_TYPES } from "../../components/item-form/item-form.config";
 import _ from "lodash";
 import { ItemImageProvider } from "../../providers/core/item/item-image/item-image";
 import { ItemProvider } from "../../providers/core/item/item";
+import { ErrorLogger } from "../../modules/ErrorLogger";
 
 @IonicPage()
 @Component({
@@ -16,6 +17,8 @@ export class EditItemPage {
   public formType = FORM_TYPES.UPDATE;
   public item;
   public images = [];
+
+  public log = new ErrorLogger();
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -42,9 +45,7 @@ export class EditItemPage {
     let itemId = this.item.id;
     this.itemProvider.deleteImage(itemId, imageId).subscribe(() => {
       this.getItemDetails(itemId);
-    }, error => {
-      console.error("error", error);
-    });
+    }, error => {this.log.error("delete image", error);});
   }
 
   newImage(src, id) {

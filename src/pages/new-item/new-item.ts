@@ -31,7 +31,7 @@ export class NewItemPage {
   onItemChanged(item) {
     this.selectedItemType = item;
     this.formType = FORM_TYPES.NEW;
-    this.images = this.itemImageProvider.generateFormattedImagesArray([]);
+    this.images =  this.itemImageProvider.generateFormattedImagesArray([]);
   }
 
   async newItem(formData) {
@@ -42,7 +42,7 @@ export class NewItemPage {
   }
 
   addImages(itemId) {
-    this.itemImageProvider.handleImages(itemId, this.images).subscribe(() => {
+    this.itemProvider.handleImages(itemId, this.images).subscribe(() => {
     }, error => this.log.error("add new images", error));
   }
 
