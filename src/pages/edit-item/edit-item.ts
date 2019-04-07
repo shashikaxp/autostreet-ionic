@@ -6,6 +6,8 @@ import _ from "lodash";
 import { ItemImageProvider } from "../../providers/core/item/item-image/item-image";
 import { ItemProvider } from "../../providers/core/item/item";
 import { ErrorLogger } from "../../modules/ErrorLogger";
+import { STORAGE } from "../../config";
+import { StorageProvider } from "../../providers/core/storage/storage";
 
 @IonicPage()
 @Component({
@@ -24,6 +26,7 @@ export class EditItemPage {
               public navParams: NavParams,
               public itemProvider: ItemProvider,
               public itemImageProvider: ItemImageProvider,
+              public storage: StorageProvider,
               public seller: SellerProvider) {
 
     let itemId = this.navParams.get("itemId");
@@ -37,8 +40,11 @@ export class EditItemPage {
     })
   }
 
-  editItem($event) {
-
+  async updateItem(formData) {
+    let sellerId = await this.storage.get(STORAGE.COMPANY_ID);
+    this.itemProvider.updateItem(sellerId, this.item.id, formData).subscribe(data => {
+      this.getItemDetails(this.item.id);
+    }, error => this.log.error("Item update", error));
   }
 
   deleteImage(src, imageId) {

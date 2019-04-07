@@ -22,6 +22,7 @@ export const ENDPOINTS = {
   ITEM: {
     ADD: API_URL + "sellers/{{param1}}/items",
     DELETE: API_URL + "items/{{param1}}",
+    UPDATE: API_URL + "sellers/{{param1}}/items/{{param2}}",
     ADD_IMAGES: API_URL + "items/{{param1}}/images",
     UPDATE_IMAGE: API_URL + "items/{{param1}}/images/{{param2}}",
     DELETE_IMAGE: API_URL + "items/{{param1}}/images/{{param2}}"
