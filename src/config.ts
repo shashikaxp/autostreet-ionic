@@ -5,7 +5,7 @@ export const API_VERSION = 'v1';
 
 export const ITEM_TYPES = {
   VEHICLE: 'vehicle',
-  SPARE_PART: 'spare-part'
+  SPARE_PART: 'part'
 };
 
 export const STORAGE = {

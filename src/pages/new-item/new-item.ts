@@ -7,6 +7,7 @@ import _ from "lodash";
 import { FORM_TYPES } from "../../components/item-form/item-form.config";
 import { ItemImageProvider } from "../../providers/core/item/item-image/item-image";
 import { ErrorLogger } from "../../modules/ErrorLogger";
+import { InventoryPage } from "../my-store/inventory/inventory";
 
 @IonicPage()
 @Component({
@@ -43,7 +44,11 @@ export class NewItemPage {
 
   addImages(itemId) {
     this.itemProvider.handleImages(itemId, this.images).subscribe(() => {
-    }, error => this.log.error("add new images", error));
+      this.navCtrl.setRoot('InventoryPage');
+    }, error => {
+      this.log.error("add new images", error);
+      this.navCtrl.setRoot('InventoryPage');
+    });
   }
 
   newImage(src, id) {

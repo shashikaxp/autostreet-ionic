@@ -5,6 +5,7 @@ import { ENDPOINTS } from "../../api/endpoints";
 import { ApiProvider } from "../../api/api";
 import { formDataGenerator } from "./form-data-generator";
 import { imageArrayGenerator } from "./image-array-generator";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class ItemImageProvider {
@@ -20,7 +21,14 @@ export class ItemImageProvider {
   addImages(itemId, images) {
     let imagesToAdd = _.filter(images, {'type': 'add', "isChanged": true});
     let formData = formDataGenerator().add(imagesToAdd);
-    return this.addSingleImage(itemId, formData);
+    if (_.size(imagesToAdd) > 0) {
+      return this.addSingleImage(itemId, formData);
+    } else {
+      return Observable.create((observer) => {
+        observer.next('No images for add');
+        observer.complete();
+      })
+    }
   }
 
   updateSingleImage(itemId, imageID, params) {
@@ -29,12 +37,20 @@ export class ItemImageProvider {
   }
 
   updateImages(itemId, images) {
-    let imagesToAdd = _.filter(images, {'type': 'update', "isChanged": true});
-    let forkArray = _.map(imagesToAdd, (image) => {
-      let params = formDataGenerator().update(image);
-      return this.updateSingleImage(itemId, image.id, params)
-    });
-    return forkJoin(forkArray);
+    let imagesToUpdate = _.filter(images, {'type': 'update', "isChanged": true});
+    if (_.size(imagesToUpdate) > 0) {
+      let forkArray = _.map(imagesToUpdate, (image) => {
+        let params = formDataGenerator().update(image);
+        return this.updateSingleImage(itemId, image.id, params)
+      });
+      return forkJoin(forkArray);
+    } else {
+      return Observable.create((observer) => {
+        observer.next('No images for update');
+        observer.complete();
+      })
+    }
+
   }
 
   generateFormattedImagesArray(images) {
