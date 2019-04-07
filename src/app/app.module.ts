@@ -16,9 +16,7 @@ import { IonicStorageModule } from "@ionic/storage";
 import { AuthProvider } from '../providers/core/auth/auth';
 import { ApiProvider } from '../providers/core/api/api';
 import { SettingsProvider } from "../providers/core/settings/settings";
-import { CompanyProvider } from '../providers/core/company/company';
 import { HttpErrorHandlerProvider } from '../providers/core/api/http-error-handler';
-import { SparePartsProvider } from '../providers/core/spare-parts/spare-parts';
 import { TokenInterceptorProvider } from "../providers/util/token-interceptor/token-interceptor";
 import { NgHttpLoaderModule } from "ng-http-loader/ng-http-loader.module";
 import { Camera } from "@ionic-native/camera";
@@ -35,6 +33,7 @@ import { ItemProvider } from '../providers/core/item/item';
 import { ErrorToastProvider } from '../providers/util/error-toast/error-toast';
 import { ItemImageProvider } from '../providers/core/item/item-image/item-image';
 import { ConfirmationPopupProvider } from '../providers/confirmation-popup/confirmation-popup';
+import { SuccessToastProvider } from '../providers/util/success-toast/success-toast';
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -69,10 +68,8 @@ export function setTranslateLoader(http: HttpClient) {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SettingsProvider,
     ApiProvider,
-    CompanyProvider,
     AuthProvider,
     HttpErrorHandlerProvider,
-    SparePartsProvider,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorProvider,
@@ -90,7 +87,8 @@ export function setTranslateLoader(http: HttpClient) {
     ItemProvider,
     ErrorToastProvider,
     ItemImageProvider,
-    ConfirmationPopupProvider
+    ConfirmationPopupProvider,
+    SuccessToastProvider
   ]
 })
 export class AppModule {}

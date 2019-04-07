@@ -3,7 +3,6 @@ import {
   AlertController,
   IonicPage, NavController, NavParams, ViewController
 } from 'ionic-angular';
-import { SparePartsProvider } from "../../providers/core/spare-parts/spare-parts";
 import { Storage } from "@ionic/storage";
 import { STORAGE } from "../../config";
 import _ from "lodash";
@@ -20,7 +19,6 @@ export class SparePartPreviewPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private sparePartProvider: SparePartsProvider,
               private storage: Storage,
               private viewCtrl: ViewController,
               private alertCtrl: AlertController) {
@@ -30,11 +28,11 @@ export class SparePartPreviewPage {
   }
 
   async addNewSparePart() {
-    let companyId = await this.storage.get(STORAGE.COMPANY_ID);
-    let params = this.getSparePartData();
-    this.sparePartProvider.addNewSparePart(companyId, params).subscribe(data => {
-      this.presentSuccessAlert();
-    });
+    // let companyId = await this.storage.get(STORAGE.COMPANY_ID);
+    // let params = this.getSparePartData();
+    // this.sparePartProvider.addNewSparePart(companyId, params).subscribe(data => {
+    //   this.presentSuccessAlert();
+    // });
   }
 
   getSparePartData() {
