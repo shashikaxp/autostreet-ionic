@@ -16,14 +16,14 @@
 // automatically applied to the <body> element in the app.
 
 .error-toast .toast-wrapper {
-  background-color: color($colors, danger) !important;
-  color: #fff !important;
+  background-color: color($colors, danger);
+  color: #fff;
   //border-radius: 5px !important;
 }
 
 .success-toast .toast-wrapper {
-  background-color: color($colors, success) !important;
-  color: #fff !important;
+  background-color: color($colors, success);
+  color: #fff ;
   //border-radius: 5px !important;
 }
 
