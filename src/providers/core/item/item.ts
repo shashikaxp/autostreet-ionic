@@ -22,7 +22,7 @@ export class ItemProvider {
   }
 
   updateItem(sellerId, itemId, paramms) {
-    let url = this.api.getHttpUrl(ENDPOINTS.ITEM.DELETE,sellerId, itemId);
+    let url = this.api.getHttpUrl(ENDPOINTS.ITEM.UPDATE,sellerId, itemId);
     return this.api.httpPutCall(url, paramms);
   }
 
