@@ -5,7 +5,7 @@ import { StorageProvider } from "../../../providers/core/storage/storage";
 import { STORAGE } from "../../../config";
 import _ from "lodash";
 import { ConfirmationPopupProvider } from "../../../providers/util/confirmation-popup/confirmation-popup";
-import { ItemProvider } from "../../../providers/core/item/item";
+import { ItemProvider } from "../../../providers/core/seller/item/item";
 import { ErrorLogger } from "../../../modules/ErrorLogger";
 
 @IonicPage()

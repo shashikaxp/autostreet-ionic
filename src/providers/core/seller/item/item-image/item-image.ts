@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import _ from "lodash";
 import { forkJoin } from "rxjs/observable/forkJoin";
-import { ENDPOINTS } from "../../api/endpoints";
-import { ApiProvider } from "../../api/api";
+import { ENDPOINTS } from "../../../api/endpoints";
+import { ApiProvider } from "../../../api/api";
 import { formDataGenerator } from "./form-data-generator";
 import { imageArrayGenerator } from "./image-array-generator";
 import { Observable } from "rxjs/Observable";
@@ -14,7 +14,7 @@ export class ItemImageProvider {
   }
 
   addSingleImage(itemId, params) {
-    let url = this.api.getHttpUrl(ENDPOINTS.ITEM.ADD_IMAGES, itemId);
+    let url = this.api.getHttpUrl(ENDPOINTS.SELLERS.ADD_IMAGES, itemId);
     return this.api.httpPostCall(url, params);
   }
 
@@ -32,7 +32,7 @@ export class ItemImageProvider {
   }
 
   updateSingleImage(itemId, imageID, params) {
-    let url = this.api.getHttpUrl(ENDPOINTS.ITEM.UPDATE_IMAGE, itemId, imageID);
+    let url = this.api.getHttpUrl(ENDPOINTS.SELLERS.UPDATE_IMAGE, itemId, imageID);
     return this.api.httpPutCall(url, params);
   }
 

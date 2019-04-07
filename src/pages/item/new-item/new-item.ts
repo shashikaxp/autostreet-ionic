@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageProvider } from "../../../providers/core/storage/storage";
 import { STORAGE } from "../../../config";
-import { ItemProvider } from "../../../providers/core/item/item";
+import { ItemProvider } from "../../../providers/core/seller/item/item";
 import _ from "lodash";
 import { FORM_TYPES } from "../../../components/item-form/item-form.config";
-import { ItemImageProvider } from "../../../providers/core/item/item-image/item-image";
+import { ItemImageProvider } from "../../../providers/core/seller/item/item-image/item-image";
 import { ErrorLogger } from "../../../modules/ErrorLogger";
 
 @IonicPage()

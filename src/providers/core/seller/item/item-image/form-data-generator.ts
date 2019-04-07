@@ -1,4 +1,4 @@
-import { dataURItoBlob } from "../../../util/blob-convertor/blob-convertor";
+import { dataURItoBlob } from "../../../../util/blob-convertor/blob-convertor";
 import _ from "lodash";
 
 export function formDataGenerator() {

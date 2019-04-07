@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ApiProvider } from "../api/api";
-import { ENDPOINTS } from "../api/endpoints";
+import { ApiProvider } from "../../api/api";
+import { ENDPOINTS } from "../../api/endpoints";
 import { forkJoin } from "rxjs/observable/forkJoin";
 import { ItemImageProvider } from "./item-image/item-image";
 
@@ -12,17 +12,17 @@ export class ItemProvider {
   }
 
   newItem(sellerId, params) {
-    let url = this.api.getHttpUrl(ENDPOINTS.ITEM.ADD, sellerId);
+    let url = this.api.getHttpUrl(ENDPOINTS.SELLERS.ADD_ITEM, sellerId);
     return this.api.httpPostCall(url, params);
   }
 
   deleteItem(itemId) {
-    let url = this.api.getHttpUrl(ENDPOINTS.ITEM.DELETE, itemId);
+    let url = this.api.getHttpUrl(ENDPOINTS.SELLERS.DELETE_ITEM, itemId);
     return this.api.httpDeleteCall(url);
   }
 
   updateItem(sellerId, itemId, paramms) {
-    let url = this.api.getHttpUrl(ENDPOINTS.ITEM.UPDATE,sellerId, itemId);
+    let url = this.api.getHttpUrl(ENDPOINTS.SELLERS.UPDATE_ITEM,sellerId, itemId);
     return this.api.httpPutCall(url, paramms);
   }
 
@@ -33,7 +33,7 @@ export class ItemProvider {
   }
 
   deleteImage(itemId, imageId) {
-    let url = this.api.getHttpUrl(ENDPOINTS.ITEM.DELETE_IMAGE, itemId, imageId);
+    let url = this.api.getHttpUrl(ENDPOINTS.SELLERS.DELETE_IMAGE, itemId, imageId);
     return this.api.httpDeleteCall(url);
   }
 

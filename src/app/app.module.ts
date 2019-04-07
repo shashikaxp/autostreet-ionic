@@ -29,8 +29,8 @@ import { FuelProvider } from '../providers/core/form-fields/fuel/fuel';
 import { TransmissionProvider } from '../providers/core/form-fields/transmission/transmission';
 import { SellerProvider } from '../providers/core/seller/seller';
 import { StorageProvider } from '../providers/core/storage/storage';
-import { ItemProvider } from '../providers/core/item/item';
-import { ItemImageProvider } from '../providers/core/item/item-image/item-image';
+import { ItemProvider } from '../providers/core/seller/item/item';
+import { ItemImageProvider } from '../providers/core/seller/item/item-image/item-image';
 import { ConfirmationPopupProvider } from '../providers/util/confirmation-popup/confirmation-popup';
 import { ToastProvider } from '../providers/util/toast/toast';
 

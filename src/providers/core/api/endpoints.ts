@@ -19,19 +19,20 @@ export const ENDPOINTS = {
     TRANSMISSION: API_URL + 'items/transmissions'
   },
 
-  ITEM: {
-    ADD: API_URL + "sellers/{{param1}}/items",
-    DELETE: API_URL + "items/{{param1}}",
-    UPDATE: API_URL + "sellers/{{param1}}/items/{{param2}}",
+  SELLERS: {
+    REGISTER: API_URL + "sellers",
+    ITEMS: API_URL + "sellers/{{param1}}/items?{{param2}}",
+    ITEM_DETAILS: API_URL + "items/{{param1}}",
+    ADD_ITEM: API_URL + "sellers/{{param1}}/items",
+    DELETE_ITEM: API_URL + "items/{{param1}}",
+    UPDATE_ITEM: API_URL + "sellers/{{param1}}/items/{{param2}}",
     ADD_IMAGES: API_URL + "items/{{param1}}/images",
     UPDATE_IMAGE: API_URL + "items/{{param1}}/images/{{param2}}",
     DELETE_IMAGE: API_URL + "items/{{param1}}/images/{{param2}}"
   },
 
-  SELLERS: {
-    REGISTER: API_URL + "sellers",
-    ITEMS: API_URL + "sellers/{{param1}}/items?{{param2}}",
-    ITEM: API_URL + "items/{{param1}}",
+  PUBLIC: {
+    ITEMS: SEARCH_API_URL + "items"
   }
 
 };
