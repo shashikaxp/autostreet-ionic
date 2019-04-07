@@ -30,10 +30,9 @@ import { TransmissionProvider } from '../providers/core/form-fields/transmission
 import { SellerProvider } from '../providers/core/seller/seller';
 import { StorageProvider } from '../providers/core/storage/storage';
 import { ItemProvider } from '../providers/core/item/item';
-import { ErrorToastProvider } from '../providers/util/error-toast/error-toast';
 import { ItemImageProvider } from '../providers/core/item/item-image/item-image';
-import { ConfirmationPopupProvider } from '../providers/confirmation-popup/confirmation-popup';
-import { SuccessToastProvider } from '../providers/util/success-toast/success-toast';
+import { ConfirmationPopupProvider } from '../providers/util/confirmation-popup/confirmation-popup';
+import { ToastProvider } from '../providers/util/toast/toast';
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -85,10 +84,9 @@ export function setTranslateLoader(http: HttpClient) {
     SellerProvider,
     StorageProvider,
     ItemProvider,
-    ErrorToastProvider,
     ItemImageProvider,
     ConfirmationPopupProvider,
-    SuccessToastProvider
+    ToastProvider
   ]
 })
 export class AppModule {}

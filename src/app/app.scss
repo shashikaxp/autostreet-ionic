@@ -15,9 +15,15 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-.httpErrorToast .toast-wrapper {
-  background-color: color($colors, danger);
-  color: #fff;
+.error-toast .toast-wrapper {
+  background-color: color($colors, danger) !important;
+  color: #fff !important;
+  //border-radius: 5px !important;
+}
+
+.success-toast .toast-wrapper {
+  background-color: color($colors, success) !important;
+  color: #fff !important;
   //border-radius: 5px !important;
 }
 
