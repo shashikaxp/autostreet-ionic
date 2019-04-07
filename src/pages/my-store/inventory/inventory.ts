@@ -17,6 +17,9 @@ export class InventoryPage {
 
   public selectedItemType;
   public items = [];
+  public page = 0;
+  public itemsPerPage = 5;
+  public infiniteScroll;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -30,15 +33,25 @@ export class InventoryPage {
 
   onItemChanged(item) {
     this.selectedItemType = item;
+    this.resetData();
     this.getItems();
   }
 
-  async getItems() {
-    let sellerId = await this.storage.get(STORAGE.COMPANY_ID);
-    let searchParams = `type=${this.selectedItemType}&page=0&size=100`;
-    this.seller.items(sellerId, searchParams).subscribe(data => {
-      this.items = data.items;
-    });
+   getItems() {
+    return new Promise(async (resolve, reject) => {
+      let sellerId = await this.storage.get(STORAGE.COMPANY_ID);
+      let searchParams = `type=${this.selectedItemType}&page=${this.page}&size=${this.itemsPerPage}`;
+      this.seller.items(sellerId, searchParams).subscribe(data => {
+        let enableScroll = _.size(data.items) === this.itemsPerPage;
+        this.page++;
+        if (this.infiniteScroll) {
+          this.infiniteScroll.enable(enableScroll);
+          this.infiniteScroll.complete()
+        }
+        this.items = _.concat(this.items, data.items);
+        resolve(this.items);
+      }, error => this.log.error("Inventory items", error));
+    })
   }
 
   getImageSrc(src) {
@@ -58,6 +71,7 @@ export class InventoryPage {
   delete(itemId) {
     return (() => {
       this.itemProvider.deleteItem(itemId).subscribe(data => {
+        this.resetData();
         this.getItems();
       }, error => this.log.error("Delete Item", error))
     });
@@ -67,6 +81,16 @@ export class InventoryPage {
     this.navCtrl.push("EditItemPage", {
       itemId: itemId
     })
+  }
+
+  async doInfinite(infiniteScroll) {
+    this.infiniteScroll = infiniteScroll;
+    await this.getItems();
+  }
+
+  resetData() {
+    this.items = [];
+    this.page = 0;
   }
 
 }
