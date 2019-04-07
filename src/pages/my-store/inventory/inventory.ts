@@ -4,7 +4,7 @@ import { SellerProvider } from "../../../providers/core/seller/seller";
 import { StorageProvider } from "../../../providers/core/storage/storage";
 import { STORAGE } from "../../../config";
 import _ from "lodash";
-import { ConfirmationPopupProvider } from "../../../providers/confirmation-popup/confirmation-popup";
+import { ConfirmationPopupProvider } from "../../../providers/util/confirmation-popup/confirmation-popup";
 import { ItemProvider } from "../../../providers/core/item/item";
 import { ErrorLogger } from "../../../modules/ErrorLogger";
 

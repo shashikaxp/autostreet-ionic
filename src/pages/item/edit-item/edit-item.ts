@@ -8,6 +8,7 @@ import { ItemProvider } from "../../../providers/core/item/item";
 import { ErrorLogger } from "../../../modules/ErrorLogger";
 import { STORAGE } from "../../../config";
 import { StorageProvider } from "../../../providers/core/storage/storage";
+import { ToastProvider } from "../../../providers/util/toast/toast";
 
 @IonicPage()
 @Component({
@@ -27,6 +28,7 @@ export class EditItemPage {
               public itemProvider: ItemProvider,
               public itemImageProvider: ItemImageProvider,
               public storage: StorageProvider,
+              public toast: ToastProvider,
               public seller: SellerProvider) {
 
     let itemId = this.navParams.get("itemId");
@@ -64,6 +66,8 @@ export class EditItemPage {
 
   updateImages() {
     this.itemProvider.handleImages(this.item.id, this.images).subscribe(data => {
+      let toast = this.toast.create('The information was successfully updated.', 'success', true);
+      toast.present();
       this.getItemDetails(this.item.id);
     }, error =>  this.log.error('update images', error))
   }

@@ -4,14 +4,14 @@ import {
   App, NavController
 } from 'ionic-angular';
 import _ from "lodash";
-import { ErrorToastProvider } from "../../util/error-toast/error-toast";
+import { ToastProvider } from "../../util/toast/toast";
 
 @Injectable()
 export class HttpErrorHandlerProvider {
 
   private navCtrl: NavController;
 
-  constructor(private errorToast: ErrorToastProvider,
+  constructor(private toastProvider: ToastProvider,
               private app: App,) {
     this.navCtrl = app.getActiveNav();
   }
@@ -32,7 +32,7 @@ export class HttpErrorHandlerProvider {
   }
 
   createErrorToast(message) {
-    let toast = this.errorToast.create(message);
+    let toast = this.toastProvider.create(message, 'error', false);
     toast.present();
   }
 
