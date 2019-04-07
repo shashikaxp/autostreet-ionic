@@ -34,6 +34,7 @@ import { StorageProvider } from '../providers/core/storage/storage';
 import { ItemProvider } from '../providers/core/item/item';
 import { ErrorToastProvider } from '../providers/util/error-toast/error-toast';
 import { ItemImageProvider } from '../providers/core/item/item-image/item-image';
+import { ConfirmationPopupProvider } from '../providers/confirmation-popup/confirmation-popup';
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -88,7 +89,8 @@ export function setTranslateLoader(http: HttpClient) {
     StorageProvider,
     ItemProvider,
     ErrorToastProvider,
-    ItemImageProvider
+    ItemImageProvider,
+    ConfirmationPopupProvider
   ]
 })
 export class AppModule {}

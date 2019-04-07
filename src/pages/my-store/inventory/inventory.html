@@ -24,7 +24,7 @@
         <p>{{item.modelName}} {{item.year}}</p>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button class="delete-button" (click)="delete()">
+        <button ion-button class="delete-button" (click)="deleteConfirmation(item.id)">
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-item-options>

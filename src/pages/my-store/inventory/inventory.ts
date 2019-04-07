@@ -4,6 +4,9 @@ import { SellerProvider } from "../../../providers/core/seller/seller";
 import { StorageProvider } from "../../../providers/core/storage/storage";
 import { STORAGE } from "../../../config";
 import _ from "lodash";
+import { ConfirmationPopupProvider } from "../../../providers/confirmation-popup/confirmation-popup";
+import { ItemProvider } from "../../../providers/core/item/item";
+import { ErrorLogger } from "../../../modules/ErrorLogger";
 
 @IonicPage()
 @Component({
@@ -18,9 +21,12 @@ export class InventoryPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public storage: StorageProvider,
-              public seller: SellerProvider) {
+              public seller: SellerProvider,
+              public itemProvider: ItemProvider,
+              public confirmationPopup: ConfirmationPopupProvider) {
   }
 
+  public log = new ErrorLogger();
 
   onItemChanged(item) {
     this.selectedItemType = item;
@@ -43,8 +49,18 @@ export class InventoryPage {
     }
   }
 
-  delete() {
-    console.log('delete');
+  deleteConfirmation(itemId) {
+    let message = "Are you sure to delete this item";
+    let popup = this.confirmationPopup.create(message, this.delete(itemId));
+    popup.present();
+  }
+
+  delete(itemId) {
+    return (() => {
+      this.itemProvider.deleteItem(itemId).subscribe(data => {
+        this.getItems();
+      }, error => this.log.error("Delete Item", error))
+    });
   }
 
   edit(itemId) {

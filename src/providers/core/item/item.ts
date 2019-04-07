@@ -16,6 +16,11 @@ export class ItemProvider {
     return this.api.httpPostCall(url, params);
   }
 
+  deleteItem(itemId) {
+    let url = this.api.getHttpUrl(ENDPOINTS.ITEM.DELETE, itemId);
+    return this.api.httpDeleteCall(url);
+  }
+
   handleImages(itemId, images) {
     let addImages = this.itemImagesProvider.addImages(itemId, images);
     let updateImages = this.itemImagesProvider.updateImages(itemId, images);
