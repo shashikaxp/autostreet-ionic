@@ -27,7 +27,7 @@ export function imageArrayGenerator() {
 
     let formattedArray = images;
     for (let i = arraySize; i < imageCount; i++) {
-      formattedArray.push(formattedObject(i, 'update'));
+      formattedArray.push(formattedObject(i, 'add'));
     }
     return formattedArray;
   };

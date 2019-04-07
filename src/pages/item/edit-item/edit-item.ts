@@ -43,7 +43,7 @@ export class EditItemPage {
   async updateItem(formData) {
     let sellerId = await this.storage.get(STORAGE.COMPANY_ID);
     this.itemProvider.updateItem(sellerId, this.item.id, formData).subscribe(data => {
-      this.getItemDetails(this.item.id);
+      this.updateImages();
     }, error => this.log.error("Item update", error));
   }
 
@@ -60,6 +60,12 @@ export class EditItemPage {
       imageObject.src = src;
       imageObject.isChanged = true;
     }
+  }
+
+  updateImages() {
+    this.itemProvider.handleImages(this.item.id, this.images).subscribe(data => {
+      this.getItemDetails(this.item.id);
+    }, error =>  this.log.error('update images', error))
   }
 
 }

@@ -33,7 +33,7 @@ export class ItemImageProvider {
 
   updateSingleImage(itemId, imageID, params) {
     let url = this.api.getHttpUrl(ENDPOINTS.ITEM.UPDATE_IMAGE, itemId, imageID);
-    return this.api.httpPostCall(url, params);
+    return this.api.httpPutCall(url, params);
   }
 
   updateImages(itemId, images) {

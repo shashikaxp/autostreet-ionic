@@ -5,7 +5,7 @@ export function formDataGenerator() {
 
    let  update = (image) => {
     let formData = new FormData();
-    formData.append('images', dataURItoBlob(image.src), image.id + '.jpeg');
+    formData.append('image', dataURItoBlob(image.src), image.id + '.jpeg');
     return formData;
   };
 
