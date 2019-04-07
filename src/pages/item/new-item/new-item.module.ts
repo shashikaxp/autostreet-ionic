@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { NewItemPage } from './new-item';
-import { ComponentsModule } from "../../components/components.module";
+import { ComponentsModule } from "../../../components/components.module";
 
 @NgModule({
   declarations: [

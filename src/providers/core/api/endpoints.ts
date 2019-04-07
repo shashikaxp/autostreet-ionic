@@ -27,7 +27,7 @@ export const ENDPOINTS = {
     UPDATE_IMAGE: API_URL + "items/{{param1}}/images/{{param2}}",
     DELETE_IMAGE: API_URL + "items/{{param1}}/images/{{param2}}"
   },
-  
+
   SELLERS: {
     REGISTER: API_URL + "sellers",
     ITEMS: API_URL + "sellers/{{param1}}/items?{{param2}}",

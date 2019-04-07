@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SellerProvider } from "../../providers/core/seller/seller";
-import { FORM_TYPES } from "../../components/item-form/item-form.config";
+import { SellerProvider } from "../../../providers/core/seller/seller";
+import { FORM_TYPES } from "../../../components/item-form/item-form.config";
 import _ from "lodash";
-import { ItemImageProvider } from "../../providers/core/item/item-image/item-image";
-import { ItemProvider } from "../../providers/core/item/item";
-import { ErrorLogger } from "../../modules/ErrorLogger";
-import { STORAGE } from "../../config";
-import { StorageProvider } from "../../providers/core/storage/storage";
+import { ItemImageProvider } from "../../../providers/core/item/item-image/item-image";
+import { ItemProvider } from "../../../providers/core/item/item";
+import { ErrorLogger } from "../../../modules/ErrorLogger";
+import { STORAGE } from "../../../config";
+import { StorageProvider } from "../../../providers/core/storage/storage";
 
 @IonicPage()
 @Component({
