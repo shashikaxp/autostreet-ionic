@@ -6,22 +6,22 @@ import { HEADER_SKIP_INTERCEPTOR } from "../api/http-headers";
 @Injectable()
 export class SellerProvider {
 
-  constructor(public apoProvider: ApiProvider) {
+  constructor(public apiProvider: ApiProvider) {
   }
 
   register(params) {
-    let url = this.apoProvider.getHttpUrl(ENDPOINTS.SELLERS.REGISTER);
-    return this.apoProvider.httpPostCall(url, params, HEADER_SKIP_INTERCEPTOR);
+    let url = this.apiProvider.getHttpUrl(ENDPOINTS.SELLERS.REGISTER);
+    return this.apiProvider.httpPostCall(url, params, HEADER_SKIP_INTERCEPTOR);
   }
 
   items(sellerId, searchParams) {
-    let url = this.apoProvider.getHttpUrl(ENDPOINTS.SELLERS.ITEMS, sellerId, searchParams);
-    return this.apoProvider.httpGetCall(url);
+    let url = this.apiProvider.getHttpUrl(ENDPOINTS.SELLERS.ITEMS, sellerId, searchParams);
+    return this.apiProvider.httpGetCall(url);
   }
 
   itemDetails(itemId) {
-    let url = this.apoProvider.getHttpUrl(ENDPOINTS.SELLERS.ITEM, itemId);
-    return this.apoProvider.httpGetCall(url);
+    let url = this.apiProvider.getHttpUrl(ENDPOINTS.SELLERS.ITEM_DETAILS, itemId);
+    return this.apiProvider.httpGetCall(url);
   }
 
 }
