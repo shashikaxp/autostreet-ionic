@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SellerProvider } from "../../../providers/core/seller/seller";
 import { StorageProvider } from "../../../providers/core/storage/storage";
-import { STORAGE } from "../../../config";
+import { ITEM_TYPES, STORAGE } from "../../../config";
 import _ from "lodash";
 import { ConfirmationPopupProvider } from "../../../providers/util/confirmation-popup/confirmation-popup";
 import { ItemProvider } from "../../../providers/core/seller/item/item";
@@ -30,6 +30,12 @@ export class InventoryPage {
   }
 
   public log = new ErrorLogger();
+
+  ionViewWillEnter() {
+    this.selectedItemType = ITEM_TYPES.VEHICLE;
+    this.resetData();
+    this.getItems();
+  }
 
   onItemChanged(item) {
     this.selectedItemType = item;
