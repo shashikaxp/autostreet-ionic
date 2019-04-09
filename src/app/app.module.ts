@@ -33,7 +33,7 @@ import { ItemProvider } from '../providers/core/seller/item/item';
 import { ItemImageProvider } from '../providers/core/seller/item/item-image/item-image';
 import { ConfirmationPopupProvider } from '../providers/util/confirmation-popup/confirmation-popup';
 import { ToastProvider } from '../providers/util/toast/toast';
-import { PublicProvider } from '../providers/public/public';
+import { PublicProvider } from '../providers/core/public/public';
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

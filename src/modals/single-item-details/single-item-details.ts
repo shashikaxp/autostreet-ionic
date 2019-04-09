@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {
   IonicPage, NavController, NavParams, ViewController
 } from 'ionic-angular';
-import { PublicProvider } from "../../providers/public/public";
+import { PublicProvider } from "../../providers/core/public/public";
 
 @IonicPage()
 @Component({

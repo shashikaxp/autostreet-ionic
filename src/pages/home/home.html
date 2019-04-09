@@ -1,62 +1,33 @@
 <ion-header>
 
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-
     <ion-title>Home</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
 
-      <ion-col col-6>
-        <ion-card padding text-center>
-          <img src="../../assets/imgs/pages/setting.png"/>
-            Find Car
-        </ion-card>
-      </ion-col>
+  <category-selector (itemChanged)="onItemChanged($event)"></category-selector>
 
-      <ion-col col-6>
-        <ion-card padding text-center>
-          <img src="../../assets/imgs/pages/setting.png"/>
-            Find Spare Part
-        </ion-card>
-      </ion-col>
+  <P *ngIf="items.length < 1">No items found</P>
 
-      <ion-col col-6>
-        <ion-card padding text-center navPush="AddSparePartsPage">
-          <img src="../../assets/imgs/pages/setting.png"/>
-          Add Car
-        </ion-card>
-      </ion-col>
+  <ion-list>
+    <ion-item *ngFor="let item of items" tappable
+              (click)="loadSingleItemModal(item.id)">
+      <ion-thumbnail item-start>
+        <img [src]="getImageSrc(item.images[0])">
+      </ion-thumbnail>
+      <h2>{{item.title}}</h2>
+      <p>{{item.modelName}} • {{item.cityName}}</p>
+    </ion-item>
+  </ion-list>
 
-      <ion-col col-6>
-        <ion-card padding text-center navPush="AddSparePartsPage">
-          <img src="../../assets/imgs/pages/setting.png"/>
-          Add Spare Part
-        </ion-card>
-      </ion-col>
 
-      <ion-col col-6>
-        <ion-card padding text-center navPush="InventoryPage">
-          <img src="../../assets/imgs/pages/setting.png"/>
-          My Inventory
-        </ion-card>
-      </ion-col>
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite($event))">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
-      <ion-col col-6>
-        <ion-card padding text-center>
-          <img src="../../assets/imgs/pages/setting.png"/>
-          My Ads
-        </ion-card>
-      </ion-col>
+  <filters ion-fixed [itemType]="selectedItemType"></filters>
 
-    </ion-row>
-  </ion-grid>
 </ion-content>

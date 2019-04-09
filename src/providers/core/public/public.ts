@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ApiProvider } from "../core/api/api";
-import { HEADER_SKIP_INTERCEPTOR } from "../core/api/http-headers";
-import { ENDPOINTS } from "../core/api/endpoints";
+import { ApiProvider } from "../api/api";
+import { HEADER_SKIP_INTERCEPTOR } from "../api/http-headers";
+import { ENDPOINTS } from "../api/endpoints";
 
 @Injectable()
 export class PublicProvider {
