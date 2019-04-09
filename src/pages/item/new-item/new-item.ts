@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageProvider } from "../../../providers/core/storage/storage";
-import { STORAGE } from "../../../config";
+import { ITEM_TYPES, STORAGE } from "../../../config";
 import { ItemProvider } from "../../../providers/core/seller/item/item";
 import _ from "lodash";
 import { FORM_TYPES } from "../../../components/item-form/item-form.config";
@@ -26,6 +26,12 @@ export class NewItemPage {
               public itemProvider: ItemProvider,
               public itemImageProvider: ItemImageProvider,
               public navParams: NavParams) {
+  }
+
+  ionViewWillEnter() {
+    this.selectedItemType = ITEM_TYPES.VEHICLE;
+    this.formType = FORM_TYPES.NEW;
+    this.images =  this.itemImageProvider.generateFormattedImagesArray([]);
   }
 
   onItemChanged(item) {
