@@ -32,7 +32,8 @@ export const ENDPOINTS = {
   },
 
   PUBLIC: {
-    ITEMS: SEARCH_API_URL + "items"
+    ITEMS: SEARCH_API_URL + "items",
+    ITEM_DETAILS: SEARCH_API_URL + "items/{{param1}}"
   }
 
 };

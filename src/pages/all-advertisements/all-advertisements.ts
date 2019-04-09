@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {
+  IonicPage, ModalController, NavController, NavParams
+} from 'ionic-angular';
 import { PublicProvider } from "../../providers/public/public";
-import { ITEM_TYPES, STORAGE } from "../../config";
+import { ITEM_TYPES } from "../../config";
 import _ from "lodash";
 import { ErrorLogger } from "../../modules/ErrorLogger";
 
@@ -23,6 +25,7 @@ export class AllAdvertisementsPage {
 
   constructor(public navCtrl: NavController,
               public publicProvider: PublicProvider,
+              public modalCtrl: ModalController,
               public navParams: NavParams) {
   }
 
@@ -52,6 +55,13 @@ export class AllAdvertisementsPage {
         resolve(this.items);
       }, error => this.log.error("Inventory items", error));
     })
+  }
+
+  loadSingleItemModal(id) {
+    let modal = this.modalCtrl.create('SingleItemDetailsPage', {
+      itemId: id
+    });
+    modal.present();
   }
 
   async doInfinite(infiniteScroll) {

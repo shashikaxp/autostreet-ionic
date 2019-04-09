@@ -14,4 +14,9 @@ export class PublicProvider {
     return this.apiProvider.httpGetCall(url, HEADER_SKIP_INTERCEPTOR);
   }
 
+  itemDetails(itemId) {
+    let url = this.apiProvider.getHttpUrl(ENDPOINTS.PUBLIC.ITEM_DETAILS, itemId);
+    return this.apiProvider.httpGetCall(url, HEADER_SKIP_INTERCEPTOR);
+  }
+
 }

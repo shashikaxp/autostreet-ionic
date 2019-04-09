@@ -1,11 +1,9 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>spare-part-preview</ion-title>
-    <ion-buttons right>
-      <button ion-button
-              (click)="close()">
-        Close
+  <ion-navbar class="navbar-white">
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close()">
+        <ion-icon color="danger" item-right name="close"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -18,8 +16,8 @@
     <ion-row no-padding>
       <ion-col col-sm>
         <ion-slides [pager]="true" [centeredSlides]="true">
-          <ion-slide *ngFor="let image of sparePart.images">
-            <img [src]="image.url">
+          <ion-slide *ngFor="let image of item?.images">
+            <img [src]="image">
           </ion-slide>
         </ion-slides>
       </ion-col>
@@ -28,52 +26,46 @@
 
     <ion-row col-12 padding>
       <ion-col col-12>
-        <h4>{{sparePart.title}}</h4>
-        <p>{{sparePart.description}}</p>
+        <h4>{{item?.title}}</h4>
+        <p>{{item?.description}}</p>
       </ion-col>
     </ion-row>
 
     <ion-row padding>
       <ion-col col-6>Manufacturer</ion-col>
       <ion-col col-6 text-right>
-        {{sparePart.manufacturer.name}}
+        {{item?.brandName}}
       </ion-col>
     </ion-row>
 
     <ion-row padding>
       <ion-col col-6>Model</ion-col>
       <ion-col col-6 text-right>
-        {{sparePart.model.name}}
+        {{item?.modelName}}
       </ion-col>
     </ion-row>
 
     <ion-row padding>
       <ion-col col-6>Category</ion-col>
       <ion-col col-6 text-right>
-        {{sparePart.category.name}}
+        {{item?.itemCategoryName}}
       </ion-col>
     </ion-row>
 
     <ion-row padding>
-      <ion-col col-6>Condition</ion-col>
+      <ion-col col-6>Seller</ion-col>
       <ion-col col-6 text-right>
-        {{sparePart.condition.name}}
+        {{item?.sellerName}}
       </ion-col>
     </ion-row>
 
     <ion-row padding>
       <ion-col col-6>Price</ion-col>
       <ion-col col-6 text-right>
-        {{sparePart.price}}
+        {{item?.price}}
       </ion-col>
     </ion-row>
 
-    <ion-row >
-      <ion-col col-12  class="center" margin-bottom>
-        <button ion-button (click)="addNewSparePart()">upload
-        </button>
-      </ion-col>
-    </ion-row>
 
   </ion-grid>
 
