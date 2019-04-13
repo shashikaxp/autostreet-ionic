@@ -19,4 +19,9 @@ export class PublicProvider {
     return this.apiProvider.httpGetCall(url, HEADER_SKIP_INTERCEPTOR);
   }
 
+  sortOptions() {
+    let url = this.apiProvider.getHttpUrl(ENDPOINTS.PUBLIC.SORT_OPTIONS);
+    return this.apiProvider.httpGetCall(url, HEADER_SKIP_INTERCEPTOR);
+  }
+
 }

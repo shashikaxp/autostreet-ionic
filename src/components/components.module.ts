@@ -11,8 +11,8 @@ import { FieldCategoryComponent } from './item-form/field-category/field-categor
 import { FieldConditionComponent } from './item-form/field-condition/field-condition';
 import { FieldFuelComponent } from './item-form/field-fuel/field-fuel';
 import { FieldTransmissionComponent } from './item-form/field-transmission/field-transmission';
-import { ItemUpdateDeleteImagesComponent } from './item-update-delete-images/item-update-delete-images';
 import { FieldContactsComponent } from './item-form/field-contacts/field-contacts';
+import { SortOptionsComponent } from './sort-options/sort-options';
 
 @NgModule({
   declarations: [CameraImageComponent,
@@ -25,8 +25,8 @@ import { FieldContactsComponent } from './item-form/field-contacts/field-contact
     FieldConditionComponent,
     FieldFuelComponent,
     FieldTransmissionComponent,
-    ItemUpdateDeleteImagesComponent,
-    FieldContactsComponent],
+    FieldContactsComponent,
+    SortOptionsComponent],
   imports: [IonicModule,
             IonicImageLoader],
   exports: [CameraImageComponent,
@@ -39,8 +39,8 @@ import { FieldContactsComponent } from './item-form/field-contacts/field-contact
     FieldConditionComponent,
     FieldFuelComponent,
     FieldTransmissionComponent,
-    ItemUpdateDeleteImagesComponent,
-    FieldContactsComponent]
+    FieldContactsComponent,
+    SortOptionsComponent]
 })
 export class ComponentsModule {
 }

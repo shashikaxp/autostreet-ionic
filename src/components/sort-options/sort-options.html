@@ -1,0 +1,8 @@
+<ion-item>
+  <ion-label>Sort</ion-label>
+  <ion-select [(ngModel)]="defaultSortOption" name="sort">
+    <ion-option *ngFor="let option of sortOptions"
+                [value]="option.id">{{option.value}}
+    </ion-option>
+  </ion-select>
+</ion-item>
