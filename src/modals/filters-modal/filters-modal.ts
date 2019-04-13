@@ -11,17 +11,22 @@ import {
 export class FiltersModalPage {
 
   public itemType;
+  public formData;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public viewCtrl: ViewController) {
 
     this.itemType = this.navParams.get('itemType');
-
+    this.formData = this.navParams.get('formData')
   }
 
   close() {
     this.viewCtrl.dismiss();
+  }
+
+  setData(formData) {
+    this.viewCtrl.dismiss(formData);
   }
 
 }

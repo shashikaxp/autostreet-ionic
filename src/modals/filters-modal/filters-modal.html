@@ -1,12 +1,42 @@
 <ion-content padding>
   <ion-buttons right>
-    <button  clear ion-button icon-only round (click)="close()">
+    <button clear ion-button icon-only round (click)="close()">
       <ion-icon name="close"></ion-icon>
     </button>
   </ion-buttons>
 
   <section>
-    {{itemType}} Filters
+
+    <form no-padding #filterForm="ngForm"
+          (submit)="setData(filterForm.value)">
+
+      <ion-row>
+        <ion-list col-12>
+
+          <sort-options
+            [defaultSortOption]="formData?.sort">
+          </sort-options>
+
+          <field-district-city
+            [defaultCity]="formData?.city"
+            [defaultDistrict]="formData?.district">
+          </field-district-city>
+
+          <field-brand-model
+            [defaultModel]="formData?.model"
+            [defaultBrand]="formData?.brand">
+          </field-brand-model>
+
+          <field-category
+            [itemType]="itemType"
+            [defaultCategory]="formData?.item_category">
+          </field-category>
+
+          <button ion-button full type="submit">Apply Filters</button>
+
+        </ion-list>
+      </ion-row>
+    </form>
   </section>
 
 </ion-content>

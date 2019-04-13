@@ -21,6 +21,13 @@ export class HomePage {
   public itemsPerPage = 5;
   public infiniteScroll;
 
+  public keyword;
+  public filters;
+
+  public searchParams;
+  public searchByKeyword = '';
+  public searchByFilters = '';
+
   public log = new ErrorLogger();
 
   constructor(public navCtrl: NavController,
@@ -31,20 +38,17 @@ export class HomePage {
 
   ionViewWillEnter() {
     this.selectedItemType = ITEM_TYPES.VEHICLE;
-    this.resetData();
-    this.getItems();
+    this.resetSearchParametersAndGetItems();
   }
 
   onItemChanged(item) {
     this.selectedItemType = item;
-    this.resetData();
-    this.getItems();
+    this.resetSearchParametersAndGetItems();
   }
 
   getItems() {
     return new Promise(async (resolve, reject) => {
-      let searchParams = `type=${this.selectedItemType}&page=${this.page}&size=${this.itemsPerPage}`;
-      this.publicProvider.items(searchParams).subscribe(data => {
+      this.publicProvider.items(this.searchParams).subscribe(data => {
         let enableScroll = _.size(data) === this.itemsPerPage;
         this.page++;
         if (this.infiniteScroll) {
@@ -64,6 +68,32 @@ export class HomePage {
     modal.present();
   }
 
+  searchParamsChanged(filterObject) {
+    this.filters = filterObject.searchParams;
+    this.searchByFilters = this.generateSearchParamsString(this.filters);
+    this.resetSearchParametersAndGetItems();
+  }
+
+  onSearchText(text) {
+    this.resetSearchParametersAndGetItems();
+  }
+
+  resetSearchParametersAndGetItems() {
+    this.resetData();
+    this.generateSearchParams();
+    this.getItems();
+  }
+
+  generateSearchParams() {
+    this.searchParams = `type=${this.selectedItemType}&page=${this.page}&limit=${this.itemsPerPage}`;
+    if (!_.isEmpty(this.keyword)) {
+      this.searchByKeyword = `&q=${this.keyword}`;
+    } else {
+      this.searchByKeyword = ``;
+    }
+    this.searchParams = `${this.searchParams}${this.searchByFilters}${this.searchByKeyword}`;
+  }
+
   async doInfinite(infiniteScroll) {
     this.infiniteScroll = infiniteScroll;
     await this.getItems();
@@ -80,6 +110,19 @@ export class HomePage {
   resetData() {
     this.items = [];
     this.page = 0;
+  }
+
+  generateSearchParamsString(formData) {
+    let searchParam = '&';
+    _.forIn(formData, (value, key) => {
+      if (value) {
+        if (key === 'item_category') {
+          key = 'category';
+        }
+        searchParam = searchParam.concat(`${key}=${value}&`);
+      }
+    });
+    return searchParam.slice(0, -1);
   }
 
 }

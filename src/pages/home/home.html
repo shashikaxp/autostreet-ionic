@@ -8,6 +8,12 @@
 
 <ion-content padding>
 
+  <ion-searchbar
+    (ionInput)="onSearchText($event)"
+    [(ngModel)]="keyword"
+    [type]="text">
+  </ion-searchbar>
+
   <category-selector (itemChanged)="onItemChanged($event)"></category-selector>
 
   <P *ngIf="items.length < 1">No items found</P>
@@ -28,6 +34,8 @@
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
 
-  <filters ion-fixed [itemType]="selectedItemType"></filters>
+  <filters ion-fixed [itemType]="selectedItemType"
+           [formData]="filters"
+           (searchParamsChanged)="searchParamsChanged($event)"></filters>
 
 </ion-content>

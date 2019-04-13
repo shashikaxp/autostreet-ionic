@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ModalController } from "ionic-angular";
 
 @Component({
@@ -12,15 +12,21 @@ import { ModalController } from "ionic-angular";
 export class FiltersComponent {
 
   @Input() itemType;
+  @Input() formData;
+  @Output() searchParamsChanged = new EventEmitter();
 
   constructor(private modalCtrl: ModalController) {
   }
 
   openFiltersModal() {
     let modal = this.modalCtrl.create('FiltersModalPage', {
-      itemType: this.itemType
+      itemType: this.itemType,
+      formData: this.formData
     });
     modal.present();
+    modal.onDidDismiss(searchParams => {
+      this.searchParamsChanged.emit({searchParams})
+    });
   }
 
 }
