@@ -24,7 +24,6 @@ $app-direction: ltr;
 
 
 
-
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.
@@ -34,9 +33,10 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary: #488aff,
-  danger: #d46060,
-  success: #00a700
+  primary: #16a085,
+  danger: #ff1744,
+  lightblack: #343434,
+  yellowgold: #FDB001
 );
 
 
@@ -44,7 +44,9 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
+$searchbar-ios-input-search-icon-color: color($colors, yellowgold);
+$searchbar-ios-input-clear-icon-color:  color($colors, yellowgold);;
+$searchbar-ios-background-color: white;
 
 
 // App Material Design Variables
@@ -57,6 +59,9 @@ $text-input-md-show-invalid-highlight: transparent;
 $text-input-md-highlight-color: transparent;
 $text-input-md-show-valid-highlight: transparent;
 
+
+$searchbar-md-input-search-icon-color: color($colors, yellowgold);;
+$searchbar-md-input-clear-icon-color:  color($colors, yellowgold);;
 
 // App Windows Variables
 // --------------------------------------------------
@@ -85,6 +90,22 @@ $text-input-md-show-valid-highlight: transparent;
 
 // Fonts
 // --------------------------------------------------
+//
+//@import "roboto";
+//@import "noto-sans";
 
-@import "roboto";
-@import "noto-sans";
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/open-sans-v16-latin-regular.ttf");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/montserrat-v13-latin-regular.ttf");
+}
+
+$font-family-base: "Open Sans";
