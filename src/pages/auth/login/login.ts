@@ -23,9 +23,9 @@ export class LoginPage {
    login(loginForm) {
     this.authProvider.login(loginForm.value).subscribe(async data => {
       try {
-        await this.storage.set(STORAGE.TOKEN, data.user.token);
-        await this.storage.set(STORAGE.COMPANY_ID, data.company_id);
-        await this.storage.set(STORAGE.USER_ID, data.user_id);
+        await this.storage.set(STORAGE.TOKEN, data.tokens.access_token);
+        await this.storage.set(STORAGE.COMPANY_ID, data.company);
+        await this.storage.set(STORAGE.USER_ID, data.user);
       } catch (e) {
         this.log._error('Error occurred while saving the data', e);
       }
