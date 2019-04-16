@@ -15,14 +15,18 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+ion-navbar {
+  font-family: "Montserrat";
+}
+
 .error-toast .toast-wrapper {
   background-color: color($colors, danger);
   color: #fff;
-  //border-radius: 5px !important;
+  //border-radius: 5px !important;$colors
 }
 
 .success-toast .toast-wrapper {
-  background-color: color($colors, success);
+  background-color: color($colors, primary);
   color: #fff ;
   //border-radius: 5px !important;
 }
@@ -38,4 +42,12 @@
 
 .navbar-white > .toolbar-background {
   background-color: #ffffff;
+}
+
+.font-open-sans {
+  font-family: "Open Sans" !important;
+}
+
+.font-montserrat {
+  font-family: "Montserrat" !important;
 }
