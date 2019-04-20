@@ -23,7 +23,7 @@
   <P class="no-items" *ngIf="items.length < 1">No items found</P>
 
   <ion-list class="font-roboto-condensed">
-    <ion-item *ngFor="let item of items" tappable
+    <ion-item *ngFor="let item of items" tappable class="pl-0"
               (click)="loadSingleItemModal(item.id)">
       <ion-thumbnail item-start>
         <img [src]="getImageSrc(item.images[0])">
@@ -37,7 +37,9 @@
         <p>{{item.city_name}} • {{item.item_category_name}}</p>
         <p class="price">Rs {{item.price}}</p>
       </div>
-
+      <p class="time" text-right>
+        12 Mar 10.00 AM
+      </p>
     </ion-item>
   </ion-list>
 
