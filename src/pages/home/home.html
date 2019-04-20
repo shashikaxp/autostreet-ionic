@@ -20,16 +20,24 @@
 
   <category-selector (itemChanged)="onItemChanged($event)"></category-selector>
 
-  <P *ngIf="items.length < 1">No items found</P>
+  <P class="no-items" *ngIf="items.length < 1">No items found</P>
 
-  <ion-list>
+  <ion-list class="font-roboto-condensed">
     <ion-item *ngFor="let item of items" tappable
               (click)="loadSingleItemModal(item.id)">
       <ion-thumbnail item-start>
         <img [src]="getImageSrc(item.images[0])">
       </ion-thumbnail>
-      <h2>{{item.title}}</h2>
-      <p>{{item.modelName}} • {{item.cityName}}</p>
+      <p class="title">{{item.title}}</p>
+      <div *ngIf="item.item_type === 'vehicle'">
+        <p>{{item.city_name}} • {{item.year}}</p>
+        <p class="price">Rs {{item.price}}</p>
+      </div>
+      <div *ngIf="item.item_type === 'part'">
+        <p>{{item.city_name}} • {{item.item_category_name}}</p>
+        <p class="price">Rs {{item.price}}</p>
+      </div>
+
     </ion-item>
   </ion-list>
 
