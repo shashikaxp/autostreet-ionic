@@ -8,6 +8,7 @@
         <ion-item no-padding col-12
                   *ngIf="getDisplayOption(formFields.Title)">
           <ion-input [ngModel]="getDisplayValue(formFields.Title)"
+                     class="custom-input"
                      placeholder="Title"
                      [name]="formFields.Title"
                      type="text"></ion-input>
@@ -17,6 +18,7 @@
                   *ngIf="getDisplayOption(formFields.Price)">
           <ion-input [ngModel]="getDisplayValue(formFields.Price)"
                      type="number" [name]="formFields.Price"
+                     class="custom-input"
                      placeholder="Price"></ion-input>
         </ion-item>
 
@@ -25,6 +27,7 @@
                   *ngIf="getDisplayOption(formFields.EngineCapacity)">
           <ion-input [ngModel]="getDisplayValue(formFields.EngineCapacity)"
                      type="number" [name]="formFields.EngineCapacity"
+                     class="custom-input"
                      placeholder="Engine Capacity"></ion-input>
         </ion-item>
 
@@ -32,10 +35,11 @@
                   *ngIf="getDisplayOption(formFields.Mileage)">
           <ion-input [ngModel]="getDisplayValue(formFields.Mileage)"
                      type="number" [name]="formFields.Mileage"
+                     class="custom-input"
                      placeholder="Mileage"></ion-input>
         </ion-item>
 
-        <ion-item  *ngIf="getDisplayOption(formFields.Year)">
+        <ion-item  *ngIf="getDisplayOption(formFields.Year)" class="pl-0">
           <ion-label>Year</ion-label>
           <ion-datetime displayFormat="YYYY" pickerFormat="YYYY"
                         [name]="formFields.Year"

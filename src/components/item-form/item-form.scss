@@ -2,4 +2,7 @@ new-item-form {
   .custom-component ion-item {
     padding-left: 0;
   }
+  .custom-input > input {
+    margin-left: 0 !important;
+  }
 }

@@ -5,11 +5,19 @@ camera-image {
   }
 
   .edit-button {
+    //text-align: center;
+    //width: 100%;
+    //padding: 7px;
+    //background: color($colors, primary);
+    //color: white;
+    font-family: "Roboto Condensed";
     text-align: center;
     width: 100%;
     padding: 7px;
-    background: color($colors, primary);
-    color: white;
+    color: color($colors, primary);
+    border: 1px solid color($colors, primary);
+    background: #ffffff;
+    border-radius: 2px;
   }
 
   .delete-button {
