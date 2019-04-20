@@ -38,6 +38,11 @@ ion-navbar {
   margin: 0 auto;
 }
 
+
+.swiper-pagination-bullet-active {
+  background:  color($colors, yellowgold);
+}
+
 .tabbar {
   opacity: inherit;
 }

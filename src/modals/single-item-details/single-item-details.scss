@@ -46,7 +46,8 @@ page-single-item-details {
   .mb-5 {
     margin-bottom: 5px;
   }
-  .swiper-pagination-bullet-active {
-    background:  color($colors, yellowgold);
+  .contact {
+    display: flex;
+    align-items: center;
   }
 }

@@ -34,6 +34,7 @@ import { ItemImageProvider } from '../providers/core/seller/item/item-image/item
 import { ConfirmationPopupProvider } from '../providers/util/confirmation-popup/confirmation-popup';
 import { ToastProvider } from '../providers/util/toast/toast';
 import { PublicProvider } from '../providers/core/public/public';
+import { CallNumber } from "@ionic-native/call-number";
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -88,7 +89,8 @@ export function setTranslateLoader(http: HttpClient) {
     ItemImageProvider,
     ConfirmationPopupProvider,
     ToastProvider,
-    PublicProvider
+    PublicProvider,
+    CallNumber
   ]
 })
 export class AppModule {}

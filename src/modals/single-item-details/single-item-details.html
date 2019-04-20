@@ -45,7 +45,7 @@
           <div class="location">
             <ion-icon name="pin"></ion-icon>
             <span float-right>&nbsp; {{item?.cityName}}
-        </span>
+            </span>
           </div>
         </ion-col>
       </ion-row>
@@ -116,7 +116,18 @@
     <ion-row class="sub-section" padding>
       <ion-col col-12>
         <p class="sub-title">CONNTACT</p>
-        <p *ngFor="let contact of item?.telephoneList">{{contact}}</p>
+        <ion-row *ngFor="let contact of item?.telephoneList">
+          <ion-col col-8 style="line-height: 2.5">
+            {{contact}}
+          </ion-col>
+         <ion-col col-4>
+           <button ion-button icon-start small outline color="primary"
+           (click)="callContactNumber(contact)">
+             <ion-icon name="call"></ion-icon>
+             Call Now
+           </button>
+         </ion-col>
+        </ion-row>
         <p *ngIf="item?.telephoneList < 1">No contacts found</p>
       </ion-col>
     </ion-row>
