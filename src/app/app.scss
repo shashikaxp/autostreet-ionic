@@ -16,7 +16,7 @@
 // automatically applied to the <body> element in the app.
 
 ion-navbar {
-  font-family: "Montserrat";
+  font-family: "Open Sans";
 }
 
 .error-toast .toast-wrapper {
@@ -50,4 +50,8 @@ ion-navbar {
 
 .font-montserrat {
   font-family: "Montserrat" !important;
+}
+
+.font-roboto-condensed {
+  font-family: "Roboto Condensed" !important;
 }
