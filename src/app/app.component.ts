@@ -8,6 +8,8 @@ import { Spinkit } from "ng-http-loader/spinkits";
 import { STORAGE } from "../config";
 import _ from "lodash";
 import { StorageProvider } from "../providers/core/storage/storage";
+import { AppVersion } from "@ionic-native/app-version";
+import { ErrorLogger } from "../modules/ErrorLogger";
 
 @Component({
   templateUrl: 'app.html'
@@ -16,11 +18,15 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage: any;
   public spinkit = Spinkit;
+  public versionCode;
+  public versionNumber;
+  public log = new ErrorLogger();
 
   constructor(public platform: Platform,
               public statusBar: StatusBar,
               public splashScreen: SplashScreen,
               public translate: TranslateService,
+              private appVersion: AppVersion,
               public storageProvider: StorageProvider) {
     this.initializeApp();
   }
@@ -29,6 +35,7 @@ export class MyApp {
     this.translate.setDefaultLang('en');
     this.platform.ready().then(() => {
       this.translate.use('en');
+      this.getAppDetails();
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
@@ -55,6 +62,16 @@ export class MyApp {
   async checkTokenValidity() {
     let token = await this.storageProvider.get(STORAGE.TOKEN);
     return !_.isEmpty(token);
+  }
+
+  async getAppDetails() {
+    try {
+      this.versionCode = await this.appVersion.getVersionCode();
+      this.versionNumber = await this.appVersion.getVersionNumber();
+    } catch (e) {
+      this.log.error('getAppDetails', e);
+    }
+
   }
 
 }

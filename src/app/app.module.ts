@@ -35,6 +35,7 @@ import { ConfirmationPopupProvider } from '../providers/util/confirmation-popup/
 import { ToastProvider } from '../providers/util/toast/toast';
 import { PublicProvider } from '../providers/core/public/public';
 import { CallNumber } from "@ionic-native/call-number";
+import { AppVersion } from "@ionic-native/app-version";
 
 export function setTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -90,7 +91,8 @@ export function setTranslateLoader(http: HttpClient) {
     ConfirmationPopupProvider,
     ToastProvider,
     PublicProvider,
-    CallNumber
+    CallNumber,
+    AppVersion
   ]
 })
 export class AppModule {}
