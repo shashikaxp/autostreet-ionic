@@ -55,3 +55,45 @@ ion-navbar {
 .font-roboto-condensed {
   font-family: "Roboto Condensed" !important;
 }
+
+//Menu
+
+.menu-title .toolbar-title {
+  color: #fff;
+  font-family: "Open Sans";
+}
+
+.menu-title .toolbar-background {
+  background-color: color($colors, primary);
+}
+
+.menu-items button {
+  font-family: "Open Sans";
+  color: color($colors, primary);;
+}
+
+.menu-items .item-inner {
+  border-color: #f1e2c2 !important
+}
+
+.version {
+  padding-left: 16px;
+}
+
+.version .number {
+  font-family: "Roboto Condensed";
+}
+
+.version .legal a {
+  text-decoration: none;
+  font-family: "Open Sans";
+}
+
+.menu-inner {
+  .content {
+    background: none;
+  }
+  .item {
+    background: none;
+  }
+}

@@ -5,14 +5,14 @@
 </spinner>
 
 <ion-menu [content]="content" id="autostreetMenu">
-  <ion-header>
+  <ion-header class="menu-title">
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <ion-title>AutoStreet</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
-    <ion-list>
+    <ion-list class="menu-items">
       <button menuClose ion-item>{{"about" | translate }}</button>
       <button menuClose ion-item>{{"contact" | translate }}</button>
       <button menuClose ion-item (click)="loadPage('SettingsPage')">
@@ -23,6 +23,16 @@
       </button>
     </ion-list>
   </ion-content>
+
+  <ion-footer>
+    <ion-toolbar>
+      <div class="version">
+        <p class="legal"><a href="https://www.google.com">Legal</a></p>
+        <p class="number"><small>v1.2.3 (66)</small></p>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+
 </ion-menu>
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false">

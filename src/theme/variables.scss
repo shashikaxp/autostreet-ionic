@@ -44,10 +44,10 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
+//search bar
 $searchbar-ios-input-search-icon-color: color($colors, yellowgold);
-$searchbar-ios-input-clear-icon-color:  color($colors, yellowgold);;
-$searchbar-ios-background-color: white;
-
+$searchbar-ios-input-clear-icon-color:  color($colors, yellowgold);
+$searchbar-ios-background-color: #fff;
 
 // App Material Design Variables
 // --------------------------------------------------
@@ -59,9 +59,9 @@ $text-input-md-show-invalid-highlight: transparent;
 $text-input-md-highlight-color: transparent;
 $text-input-md-show-valid-highlight: transparent;
 
-
-$searchbar-md-input-search-icon-color: color($colors, yellowgold);;
-$searchbar-md-input-clear-icon-color:  color($colors, yellowgold);;
+//search bar
+$searchbar-md-input-search-icon-color: color($colors, yellowgold);
+$searchbar-md-input-clear-icon-color:  color($colors, yellowgold);
 
 // App Windows Variables
 // --------------------------------------------------
