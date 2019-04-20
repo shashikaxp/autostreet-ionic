@@ -116,8 +116,8 @@
     <ion-row class="sub-section" padding>
       <ion-col col-12>
         <p class="sub-title">CONNTACT</p>
-        <ion-row *ngFor="let contact of item?.telephoneList">
-          <ion-col col-8 style="line-height: 2.5">
+        <ion-row *ngFor="let contact of item?.telephoneList" class="contact">
+          <ion-col col-8>
             {{contact}}
           </ion-col>
          <ion-col col-4>
