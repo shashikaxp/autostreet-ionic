@@ -1,3 +1,52 @@
 page-single-item-details {
-
+  font-family: "Roboto Condensed";
+  .grid {
+    padding-bottom: 20px !important;
+    margin-bottom: 20px;
+  }
+  .price {
+    padding: 8px 14px;
+    background: #FDB001;
+    text-align: center;
+    border-radius: 5px;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #343434;
+  }
+  .seller {
+    text-align: center;
+  }
+  .seller .location {
+    width: fit-content;
+    margin: 0 auto;
+  }
+  .line {
+    border-top: 1px solid;
+    width: 90%;
+    border-color: color($colors, primary);
+  }
+  .sub-section {
+    padding-bottom: 0px !important;
+  }
+  .properties {
+    font-weight: 600;
+    color: #666;
+    font-size: 14px;
+    margin-top: 0;
+  }
+  .sub-title {
+    font-weight: 600;
+    color: #666;
+    font-size: 16px;
+    margin-top: 0;
+  }
+  .mt-0 {
+    margin-top: 0 !important;
+  }
+  .mb-5 {
+    margin-bottom: 5px;
+  }
+  .swiper-pagination-bullet-active {
+    background:  color($colors, yellowgold);
+  }
 }

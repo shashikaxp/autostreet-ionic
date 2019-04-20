@@ -71,7 +71,8 @@ ion-navbar {
 
 .menu-items button {
   font-family: "Open Sans";
-  color: color($colors, primary);;
+  color: color($colors, primary);
+  font-weight: 600;
 }
 
 .menu-items .item-inner {

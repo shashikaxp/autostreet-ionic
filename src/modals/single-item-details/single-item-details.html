@@ -1,18 +1,17 @@
 <ion-header>
 
-  <ion-navbar class="navbar-white">
+  <ion-navbar color="primary">
     <ion-buttons end>
       <button ion-button icon-only (click)="close()">
-        <ion-icon color="danger" item-right name="close"></ion-icon>
+        <ion-icon item-right name="close"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content>
-  <ion-grid no-padding>
+  <ion-grid no-padding class="grid">
     <ion-row no-padding>
       <ion-col col-sm>
         <ion-slides [pager]="true" [centeredSlides]="true">
@@ -23,49 +22,104 @@
       </ion-col>
     </ion-row>
 
+    <p *ngIf="item?.images < 1" text-center>
+      No images found
+    </p>
 
-    <ion-row col-12 padding>
+    <section>
+      <ion-row>
+        <div class="price">
+          <ion-icon name="pricetag"></ion-icon>
+          <span float-right>&nbsp; {{item?.price | currency:'Rs '}}
+        </span>
+        </div>
+      </ion-row>
+    </section>
+
+    <section class="seller" padding>
+      <ion-row >
+        <ion-col col-8 push-2>
+          <h3 class="mb-5">{{item?.title}}</h3>
+          <p class="mb-5 mt-0">{{item?.sellerName}}</p>
+          <p class="mb-5 mt-0">{{item?.date | date:'d LLL h.mm aaa'}}</p>
+          <div class="location">
+            <ion-icon name="pin"></ion-icon>
+            <span float-right>&nbsp; {{item?.cityName}}
+        </span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </section>
+
+    <hr class="line">
+
+    <ion-row class="sub-section" padding>
       <ion-col col-12>
-        <h4>{{item?.title}}</h4>
+        <p class="sub-title">DESCRIPTION</p>
         <p>{{item?.description}}</p>
       </ion-col>
     </ion-row>
 
-    <ion-row padding>
-      <ion-col col-6>Manufacturer</ion-col>
+    <hr class="line">
+
+    <ion-row class="sub-section" padding>
+      <ion-col col-6 class="properties">BRAND</ion-col>
       <ion-col col-6 text-right>
         {{item?.brandName}}
       </ion-col>
     </ion-row>
 
-    <ion-row padding>
-      <ion-col col-6>Model</ion-col>
+    <ion-row class="sub-section" padding>
+      <ion-col col-6 class="properties">MODEL</ion-col>
       <ion-col col-6 text-right>
         {{item?.modelName}}
       </ion-col>
     </ion-row>
 
-    <ion-row padding>
-      <ion-col col-6>Category</ion-col>
+    <ion-row class="sub-section" padding>
+      <ion-col col-6 class="properties">CATEGORY</ion-col>
       <ion-col col-6 text-right>
         {{item?.itemCategoryName}}
       </ion-col>
     </ion-row>
 
-    <ion-row padding>
-      <ion-col col-6>Seller</ion-col>
+    <ion-row class="sub-section" padding  *ngIf="item?.year">
+      <ion-col col-6 class="properties">YEAR</ion-col>
       <ion-col col-6 text-right>
-        {{item?.sellerName}}
+        {{item?.year}}
       </ion-col>
     </ion-row>
 
-    <ion-row padding>
-      <ion-col col-6>Price</ion-col>
+    <ion-row class="sub-section" padding *ngIf="item?.millage">
+      <ion-col col-6 class="properties">MILEAGE</ion-col>
       <ion-col col-6 text-right>
-        {{item?.price}}
+        {{item?.millage}}
       </ion-col>
     </ion-row>
 
+    <ion-row class="sub-section" padding *ngIf="item?.transmission">
+      <ion-col col-6 class="properties">TRANSMISSION</ion-col>
+      <ion-col col-6 text-right>
+        {{item?.transmission}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="sub-section" padding *ngIf="item?.fuelType">
+      <ion-col col-6 class="properties">FUEL</ion-col>
+      <ion-col col-6 text-right>
+        {{item?.fuelType}}
+      </ion-col>
+    </ion-row>
+
+    <hr style="margin-top: 16px" class="line">
+
+    <ion-row class="sub-section" padding>
+      <ion-col col-12>
+        <p class="sub-title">CONNTACT</p>
+        <p *ngFor="let contact of item?.telephoneList">{{contact}}</p>
+        <p *ngIf="item?.telephoneList < 1">No contacts found</p>
+      </ion-col>
+    </ion-row>
 
   </ion-grid>
 
