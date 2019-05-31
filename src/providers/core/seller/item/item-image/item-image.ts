@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import _ from "lodash";
-import { forkJoin } from "rxjs/observable/forkJoin";
 import { ENDPOINTS } from "../../../api/endpoints";
 import { ApiProvider } from "../../../api/api";
 import { formDataGenerator } from "./form-data-generator";
 import { imageArrayGenerator } from "./image-array-generator";
 import { Observable } from "rxjs/Observable";
+import { combineLatest } from "rxjs/observable/combineLatest";
 
 @Injectable()
 export class ItemImageProvider {
@@ -39,18 +39,17 @@ export class ItemImageProvider {
   updateImages(itemId, images) {
     let imagesToUpdate = _.filter(images, {'type': 'update', "isChanged": true});
     if (_.size(imagesToUpdate) > 0) {
-      let forkArray = _.map(imagesToUpdate, (image) => {
+      let observerArray = _.map(imagesToUpdate, (image) => {
         let params = formDataGenerator().update(image);
         return this.updateSingleImage(itemId, image.id, params)
       });
-      return forkJoin(forkArray);
+      return combineLatest(observerArray);
     } else {
       return Observable.create((observer) => {
         observer.next('No images for update');
         observer.complete();
       })
     }
-
   }
 
   generateFormattedImagesArray(images) {

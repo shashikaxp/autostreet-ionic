@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ApiProvider } from "../../api/api";
 import { ENDPOINTS } from "../../api/endpoints";
-import { forkJoin } from "rxjs/observable/forkJoin";
 import { ItemImageProvider } from "./item-image/item-image";
+import { combineLatest } from "rxjs/observable/combineLatest";
 
 @Injectable()
 export class ItemProvider {
@@ -29,7 +29,7 @@ export class ItemProvider {
   handleImages(itemId, images) {
     let addImages = this.itemImagesProvider.addImages(itemId, images);
     let updateImages = this.itemImagesProvider.updateImages(itemId, images);
-    return forkJoin([addImages, updateImages]);
+    return combineLatest(addImages, updateImages);
   }
 
   deleteImage(itemId, imageId) {

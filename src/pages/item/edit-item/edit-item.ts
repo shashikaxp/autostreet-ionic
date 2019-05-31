@@ -52,6 +52,7 @@ export class EditItemPage {
   deleteImage(src, imageId) {
     let itemId = this.item.id;
     this.itemProvider.deleteImage(itemId, imageId).subscribe(() => {
+      this.successToast();
       this.getItemDetails(itemId);
     }, error => {this.log.error("delete image", error);});
   }
@@ -66,10 +67,14 @@ export class EditItemPage {
 
   updateImages() {
     this.itemProvider.handleImages(this.item.id, this.images).subscribe(data => {
-      let toast = this.toast.create('The information was successfully updated.', 'success', true);
-      toast.present();
+      this.successToast();
       this.getItemDetails(this.item.id);
     }, error =>  this.log.error('update images', error))
+  }
+
+  successToast() {
+    let toast = this.toast.create('The information was successfully updated.', 'success', true);
+    toast.present();
   }
 
 }
