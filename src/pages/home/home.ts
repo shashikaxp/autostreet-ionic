@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {
-  IonicPage, ModalController, NavController, NavParams
+  IonicPage, NavController, NavParams
 } from 'ionic-angular';
 import { ITEM_TYPES } from "../../config";
 import { ErrorLogger } from "../../modules/ErrorLogger";
@@ -32,7 +32,6 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,
               public publicProvider: PublicProvider,
-              public modalCtrl: ModalController,
               public navParams: NavParams) {
   }
 
@@ -61,11 +60,10 @@ export class HomePage {
     })
   }
 
-  loadSingleItemModal(id) {
-    let modal = this.modalCtrl.create('SingleItemDetailsPage', {
+  loadSingleItemPage(id) {
+    this.navCtrl.push('SingleItemDetailsPage', {
       itemId: id
     });
-    modal.present();
   }
 
   searchParamsChanged(filterObject) {

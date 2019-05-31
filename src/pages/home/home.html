@@ -24,7 +24,7 @@
 
   <ion-list class="font-roboto-condensed">
     <ion-item *ngFor="let item of items" tappable class="pl-0"
-              (click)="loadSingleItemModal(item.id)">
+              (click)="loadSingleItemPage(item.id)">
       <ion-thumbnail item-start>
         <img [src]="getImageSrc(item.images[0])">
       </ion-thumbnail>
