@@ -11,7 +11,7 @@
           (submit)="setData(filterForm.value)">
 
       <ion-row>
-        <ion-list col-12>
+        <ion-list col-12 class="filters-form">
 
           <sort-options
             [defaultSortOption]="formData?.sort">
@@ -32,11 +32,20 @@
             [defaultCategory]="formData?.item_category">
           </field-category>
 
-          <button ion-button full type="submit">Apply Filters</button>
+          <button margin-top ion-button full (click)="filterForm">Apply
+            Filters</button>
 
         </ion-list>
       </ion-row>
     </form>
+
+    <ion-row>
+      <ion-col col-12>
+        <button ion-button color="danger" full (click)="resetFilters()">Reset
+          Filters</button>
+      </ion-col>
+    </ion-row>
+
   </section>
 
 </ion-content>

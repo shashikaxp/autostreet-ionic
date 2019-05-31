@@ -22,11 +22,22 @@ export class FiltersModalPage {
   }
 
   close() {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss({
+      canUpdate: false
+    });
+  }
+
+  resetFilters() {
+    this.viewCtrl.dismiss({
+      canUpdate: true
+    });
   }
 
   setData(formData) {
-    this.viewCtrl.dismiss(formData);
+    this.viewCtrl.dismiss({
+      canUpdate: true,
+      data: formData
+    });
   }
 
 }

@@ -66,10 +66,13 @@ export class HomePage {
     });
   }
 
-  searchParamsChanged(filterObject) {
-    this.filters = filterObject.searchParams;
-    this.searchByFilters = this.generateSearchParamsString(this.filters);
-    this.resetSearchParametersAndGetItems();
+  searchParamsChanged(filterData) {
+    console.log('##########', filterData.searchParams.canUpdate);
+    if (filterData.searchParams.canUpdate) {
+      this.filters = filterData.searchParams.data;
+      this.searchByFilters = this.generateSearchParamsString(this.filters);
+      this.resetSearchParametersAndGetItems();
+    }
   }
 
   onSearchText(text) {
@@ -110,17 +113,22 @@ export class HomePage {
     this.page = 0;
   }
 
-  generateSearchParamsString(formData) {
-    let searchParam = '&';
-    _.forIn(formData, (value, key) => {
-      if (value) {
-        if (key === 'item_category') {
-          key = 'category';
+  generateSearchParamsString(filterData) {
+    if (!_.isEmpty(filterData)) {
+      let searchParam = '&';
+      _.forIn(filterData, (value, key) => {
+        if (value) {
+          if (key === 'item_category') {
+            key = 'category';
+          }
+          searchParam = searchParam.concat(`${key}=${value}&`);
         }
-        searchParam = searchParam.concat(`${key}=${value}&`);
-      }
-    });
-    return searchParam.slice(0, -1);
+      });
+      return searchParam.slice(0, -1);
+    } else {
+      return "";
+    }
+
   }
 
 }
